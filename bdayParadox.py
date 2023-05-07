@@ -23,7 +23,7 @@ def getBirthdays(numberOfBirthdays):
 
 
 def getMatch(birthdays):
-    """Returns the dat object of a birthday that occurs more than once 
+    """Returns the date object of a birthday that occurs more than once 
     in the birthdays list."""
     if len(birthdays) == len(set(birthdays)):
         return None # all birthdays are unique, so return None.
@@ -51,9 +51,9 @@ MONTHS = ('Jan','Feb','Mar','Apr','May','Jun',
           'Jul','Aug','Sep','Oct','Nov','Dec')
 
 while True: #keep asking until the user enters a valid amount.
-    print('How many birthdays shall I generate? (Max 100)')
+    print('How many birthdays shall I generate? (Max 1000)')
     response = input('>')
-    if response.isdecimal() and (0 < int(response) <= 100):
+    if response.isdecimal() and (0 < int(response) <= 1000):
         numBdays = int(response)
         break # User has entered a valid amount.
 print()
