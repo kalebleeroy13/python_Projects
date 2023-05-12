@@ -206,3 +206,10 @@ def displayCards(cards):
         else:
             # Print the card's front:
             rank, suit = card # The card is a tuple data structure.
+            rows[1] += '|{} | '.format(rank.ljust(2))
+            rows[2] += '| {} | '.format(suit)
+            rows[3] += '|_{}|'.format(rank.rjust(2, '_'))
+
+    # Print each row on the screen:
+    for row in rows:
+        print(row)
