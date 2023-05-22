@@ -8,10 +8,10 @@ Tags: large, game, card game"""
 import random, sys
 
 # Set up the constants:
-Hearts = chr(9829) #Character 9829 is '♥'
-Diamonds = chr(9830) #Character 9830 is '♦'
-Spades = chr(9824) #Character 9824 is '♠'
-Clubs = chr(9827) #Character is '♣'
+HEARTS = chr(9829) #Character 9829 is '♥'
+DIAMONDS = chr(9830) #Character 9830 is '♦'
+SPADES = chr(9824) #Character 9824 is '♠'
+CLUBS = chr(9827) #Character is '♣'
 # (A list o fchr codes is at https://inventwithpython.com/charactermap)
 BACKSIDE = 'backside'
 
@@ -163,7 +163,7 @@ def displayHands(playerHand, dealerHand, showDealerHand):
 
     # Show the player's cards:
     print('PLAYER:', getHandValue(playerHand))
-    displayHands(playerHand)
+    displayCards(playerHand)
 
 
 def getHandValue(cards):
@@ -213,3 +213,29 @@ def displayCards(cards):
     # Print each row on the screen:
     for row in rows:
         print(row)
+
+
+def getMove(playerHand, money):
+    """Aks the player for their move, and returns 'H' for hit, 'S' for 
+    stand, and 'D' for double down. """
+    while True:   # Keep looping until the player enters a correct move. 
+        # Determine what moves the player can make:
+        moves = ['(H)it', '(S)tand']
+
+        # The player can double down on their first move, which we can 
+        # tell because they'll have exactly two cards:
+        if len(playerHand) == 2 and money > 0:
+            moves.append('(D)ouble down')
+
+        # Get the player's move:
+        movePrompt = ', '.join(moves) + '> '
+        move = input(movePrompt).upper()
+        if moves in ('H', 'S'):
+            return move # player has entered a valid move.
+        if move == 'D' and '(D)ouble down' in moves:
+            return move # Player has entered a valid move. 
+
+
+# if the program is run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()
