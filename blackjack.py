@@ -122,8 +122,8 @@ def main():
 def getBet(maxBet):
     """Ask the player how much they want to bet for this round."""
     while True: #Keep asking until they enter a valid amount.
-        print('How much do you bet? (1-{}, or Quit)' .format(maxBet))
-        bet = input('>').upper().strip()
+        print('How much do you bet? (1-{}, or QUIT)' .format(maxBet))
+        bet = input('> ').upper().strip()
         if bet == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
@@ -230,7 +230,7 @@ def getMove(playerHand, money):
         # Get the player's move:
         movePrompt = ', '.join(moves) + '> '
         move = input(movePrompt).upper()
-        if moves in ('H', 'S'):
+        if move in ('H', 'S'):
             return move # player has entered a valid move.
         if move == 'D' and '(D)ouble down' in moves:
             return move # Player has entered a valid move. 
