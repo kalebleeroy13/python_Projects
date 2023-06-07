@@ -61,19 +61,19 @@ def main():
             bext.goto(logo[X], logo[Y])
             print('    ', end='') # (!)Try  commenting this line out.
 
-            originalDirection = logo[Dir]
+            originalDirection = logo[DIR]
 
             # See if the logo bounces pff the corners:
             if logo[X] == 0 and logo[Y] == 0:
-                logo[Dir] = DOWN_RIGHT
+                logo[DIR] = DOWN_RIGHT
                 cornerBounces += 1
             elif logo[X] == 0 and logo[Y] == HEIGHT - 1:
                 logo[DIR] = UP_RIGHT
                 cornerBounces += 1
             elif logo[X] == WIDTH - 3 and logo[Y] == 0:
-                logo[Dir] = DOWN_LEFT
+                logo[DIR] = DOWN_LEFT
                 cornerBounces += 1
-            elif logo[X] == WIDTH - 3 and logo[Y] == Height - 1:
+            elif logo[X] == WIDTH - 3 and logo[Y] == HEIGHT - 1:
                 logo[DIR] = UP_LEFT
                 cornerBounces += 1
 
@@ -92,7 +92,7 @@ def main():
 
             # See if the logo bounces off the top edge:
             elif logo[Y] == 0 and logo[DIR] == UP_LEFT:
-                logo[Dir] = DOWN_LEFT
+                logo[DIR] = DOWN_LEFT
             elif logo[Y] == 0 and logo[DIR] == UP_RIGHT:
                 logo[DIR] = DOWN_RIGHT
 
@@ -102,13 +102,13 @@ def main():
             elif logo[Y] == HEIGHT - 1 and logo[DIR] == DOWN_RIGHT:
                 logo[DIR] = UP_RIGHT
 
-            if logo[DIR] != originalDirectin:
+            if logo[DIR] != originalDirection:
                 # Change color when the logo bounces:
                 logo[COLOR] = random.choice(COLORS)
 
             # Move the logo. (X moves by 2 because the terminal
             # characters are twice as tall as they are wide.)
-            if logo[Dir] == UP_RIGHT:
+            if logo[DIR] == UP_RIGHT:
                 logo[X] += 2
                 logo[Y] -= 1
             elif logo[DIR] == UP_LEFT:
@@ -117,7 +117,7 @@ def main():
             elif logo[DIR] == DOWN_RIGHT:
                 logo[X] += 2
                 logo[Y] += 1
-            elif logo[Dir] == DOWN_LEFT:
+            elif logo[DIR] == DOWN_LEFT:
                 logo[X] -= 2
                 logo[X] += 1
 
@@ -129,7 +129,7 @@ def main():
         for logo in logos:
             # Draw the logos at their new location:
             bext.goto(logo[X], logo[Y])
-            bext.fg(logo[Color])
+            bext.fg(logo[COLOR])
             print('DVD', end='')
 
         bext.goto(0, 0)
@@ -144,5 +144,5 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
             print()
-            print('Bouncung DVD Logo, by Al Sweigart')
+            print('Bouncing DVD Logo, by Al Sweigart')
             sys.exit() # When Ctrl-C is pressed, end the program.
