@@ -37,7 +37,7 @@ DIRECTIONS  = (UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT)
 COLOR = 'color'
 X = 'x'
 Y = 'y'
-Dir = 'direction'
+DIR = 'direction'
 
 
 def main():
@@ -104,7 +104,7 @@ def main():
 
             if logo[DIR] != originalDirectin:
                 # Change color when the logo bounces:
-                logo[Color] = random.choice(COLORS)
+                logo[COLOR] = random.choice(COLORS)
 
             # Move the logo. (X moves by 2 because the terminal
             # characters are twice as tall as they are wide.)
