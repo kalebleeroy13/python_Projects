@@ -6,7 +6,7 @@ View this code at https://nostarch.com/big-book-small-python-projects
 Tags: short, beginner, cryoitgraphy, math"""
 
 try:
-    import pypercllip # pyperclip copies text to the clipboard.
+    import pyperclip # pyperclip copies text to the clipboard.
 except ImportError:
     pass # If pyperclip is not installed, do nothing. it's no big deal.
 
@@ -36,7 +36,7 @@ while True: #keep asking until the user enters e or d.
 # let the user enter the key to use:
 while True: # keep asking until the user enters a valid key.
     maxKey = len(SYMBOLS) - 1
-    print('Please enter the key (o to {}) to use.' .fromat(maxKey))
+    print('Please enter the key (o to {}) to use.'.format(maxKey))
     response = input('>'). upper()
     if not response.isdecimal():
         continue
@@ -45,3 +45,44 @@ while True: # keep asking until the user enters a valid key.
         key = int(response)
         break
 
+# Let the user enter the message to encrypt/decrypt:
+print('Enter the message to {}.'.format(mode))
+message = input('> ')
+
+# Caesar cipher only works on uppercase letters:
+message = message.upper()
+
+#stores the encrypted/decrypted form of the message:
+translated = ''
+
+# Encrypt/decrypt each symbol in the message:
+for symbol in message:
+    if symbol in SYMBOLS:
+        #get the encrypted (or decrypted)number for this symbol.
+        num = SYMBOLS.find(symbol) #Get the number of the symbol.
+        if mode == 'encrypt':
+            num = num + key
+        elif mode == 'decrypt':
+            num = num - key
+
+        #Handle th wrap-around  if num is larger than the length of 
+        #SYMBOLS or less than 0:
+        if num >= len(SYMBOLS):
+            num = num - len(SYMBOLS)
+        elif num < 0:
+            num = num + len(SYMBOLS)
+
+        #Add encrypted/decrypted number's symbol to translated:
+        translated = translated + SYMBOLS[num]
+    else:
+        #just add the symbol without encrypting/decrypting:
+        translated = translated + symbol
+
+#Display the encrypted/decrypted string to the screen:
+print(translated)
+
+try:
+    pyperclip.copy(translated)
+    print('Full {}ed text copied to clipboard.'.format(mode))
+except:
+    pass # Do nothing if pyperclip wasn't installed.
