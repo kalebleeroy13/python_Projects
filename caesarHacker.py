@@ -36,4 +36,4 @@ for key in range(len(SYMBOLS)): #Loop through every possible key.
             translated = translated + symbol
 
     # Display the key being tested, along with its decrypted text:
-    print('key #{}: {}'.format(key,translated))
+    print('Key #{}: {}' .format(key,translated))
