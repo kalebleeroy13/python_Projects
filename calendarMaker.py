@@ -89,5 +89,6 @@ def getCalendarfor(year,month):
     return calText
 
 
-
+calText = getCalendarfor(year, month)
+print(calText) #Disply the calendar
     
