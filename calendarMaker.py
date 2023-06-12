@@ -75,5 +75,19 @@ def getCalendarfor(year,month):
             currentDate += datetime.timedelta(days=1) #go to next day.
             dayNumberRow += '|\n' #Add the vertical line after Saturday.
 
-            
+            # Add the day number row and 3 blank rows to the calendar tex.
+            calText += blankRow
+            for i in range(3): # (!) Try changing the 3 to a 5 or 10.
+                calText += blankRow
+
+            # Check if we're done with the month:
+            if currentDate.month != month:
+                break
+
+    # Add the horizontal line at the very bottom of the calendar
+    calText =+ weekSeperator
+    return calText
+
+
+
     
