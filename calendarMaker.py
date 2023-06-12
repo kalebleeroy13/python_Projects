@@ -17,7 +17,7 @@ while True: # loop to get a year from the user.
     print('Enter the year for the calendar:')
     response = input('> ')
 
-    if reponse.isdecimal() and int(response) > 0:
+    if response.isdecimal() and int(response) > 0:
         year = int(response)
         break
 
