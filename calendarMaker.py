@@ -43,7 +43,7 @@ def getCalendarfor(year,month):
     calText = '' #calText eill contain the string of our calendar.
 
     # Put the month and year at the top of the calendar:
-    calText += (' ' * 34) + Months[month - 1] + ' ' + str(year) + '\n'
+    calText += (' ' * 34) + MONTHS[month - 1] + ' ' + str(year) + '\n'
     
     # Add the days of the week labels to the calendar:
     # (!) Try changing this to abbreviations : SUN, MON, TUE, etc.
@@ -57,14 +57,14 @@ def getCalendarfor(year,month):
 
     # Get the first date in the month. (The datetime module handles all 
     # the complicated calendar stuff for us here.)
-    currentDat = datetime.date(year,month, 1)
+    currentDate = datetime.date(year,month, 1)
 
     # Roll back currentDate until it is Sunday. (weekday() returns 6
     # for Sunday not 0.)
     while currentDate.weekday() != 6:
-        currentDate -= datetime.timedelta(day=1)
+        currentDate -= datetime.timedelta(days=1)
 
-    while true: # Loop over each week in the month.
+    while True: # Loop over each week in the month.
         calText += weekSeperator
 
         # dayNumberRow is the row with the day number labels:
@@ -73,19 +73,19 @@ def getCalendarfor(year,month):
             dayNumberLabel = str(currentDate.day).rjust(2)
             dayNumberRow += '|' + dayNumberLabel + (' ' * 8)
             currentDate += datetime.timedelta(days=1) #go to next day.
-            dayNumberRow += '|\n' #Add the vertical line after Saturday.
+        dayNumberRow += '|\n' #Add the vertical line after Saturday.
 
             # Add the day number row and 3 blank rows to the calendar tex.
+        calText += dayNumberRow
+        for i in range(3): # (!) Try changing the 3 to a 5 or 10.
             calText += blankRow
-            for i in range(3): # (!) Try changing the 3 to a 5 or 10.
-                calText += blankRow
 
-            # Check if we're done with the month:
-            if currentDate.month != month:
-                break
+        # Check if we're done with the month:
+        if currentDate.month != month:
+            break
 
     # Add the horizontal line at the very bottom of the calendar
-    calText =+ weekSeperator
+    calText += weekSeperator
     return calText
 
 
