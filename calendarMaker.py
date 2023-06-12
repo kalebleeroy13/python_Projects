@@ -91,4 +91,10 @@ def getCalendarfor(year,month):
 
 calText = getCalendarfor(year, month)
 print(calText) #Disply the calendar
-    
+
+# Save the calendar to a text file:
+calendarFilename = 'calendar _{}_{}.txt' .format(year, month)
+with open(calendarFilename, 'w') as fileObj: 
+    fileObj.write(calText)
+
+    print('Saved to' + calendarFilename)
