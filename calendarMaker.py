@@ -47,7 +47,7 @@ def getCalendarfor(year,month):
     
     # Add the days of the week labels to the calendar:
     # (!) Try changing this to abbreviations : SUN, MON, TUE, etc.
-    calText += '...Sunday.....Monday....Tuesday...Wednesday...Thursday....Friday....Saturday..\n'
+    calText += '...Sun.....Mon....Tues...Wed...Thurs....Fri....Sat..\n'
 
     # The horizontal line string that seperate weeks:
     weekSeperator = ('+----------' * 7) + '\n'
