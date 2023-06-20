@@ -41,10 +41,10 @@ print(p2Name + ', you have a GOLD box in front of you.')
 print()
 print(p1Name + ', you will get to look into your box.')
 print(p2Name.upper() + ', close your eyes and don\'t look !!!')
-input('When ' + p2Name + 'has closed their eyes, press Enter...')
+input('When ' + p2Name + ' has closed their eyes, press Enter...')
 print()
 
-print(p1Name + 'here is the inside of your box:')
+print(p1Name + ' here is the inside of your box:')
 
 if random.randint(1, 2) == 1:
     carrotInFirstBox = True
@@ -79,9 +79,8 @@ else:
    print(playerNames)
    
 input('Press Enter to continue...')
-
 print('\n' * 100) # Clear the screen by printing several newlines.
-print(p1Name + ', tell' + p2Name + ' to open their eyes.')
+print(p1Name + ', tell ' + p2Name + ' to open their eyes.')
 input('Press Enter to continue...')
 
 print()
@@ -92,7 +91,7 @@ print()
 input('Then press Enter to continue...')
 
 print()
-print(p2Name + ', do you want to sqap boxes with' + p1Name + '? YES/NO')
+print(p2Name + ', do you want to swap boxes with ' + p1Name + '? YES/NO')
 while True:
    response = input('> ').upper()
    if not (response.startswith('Y') or response.startswith('N')):
@@ -103,7 +102,7 @@ while True:
 firstBox = 'RED ' #note the space after the "D".
 secondBox = 'GOLD' 
 
-if repsonse.startswith('Y'):
+if response.startswith('Y'):
    carrotInFirstBox = not carrotInFirstBox
    firstBox, secondBox = secondBox, firstBox
 
