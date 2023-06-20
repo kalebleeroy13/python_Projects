@@ -26,13 +26,12 @@ p2Name = input('Human player2, enter your name: ')
 playerNames = p1Name[:11].center(11) + '  ' + p2Name[:11].center(11)
 
 print(''' HERE ARE TWO BOXES:
-   _______________            _______________
-  /              /|          /              /|
-*--------------*  |        *--------------*  |
-|   RED        |           |      GOLD       |
-|   BOX        | /         | /    BOX     | /
-|              |/          |/             |/
-*--------------*           *--------------*  ''')
+  ___________                ____________
+ /          /|              /           /|
+*---------*  |             *---------*   |
+|   RED    | |             |    GOLD  |  |
+|   BOX    | /             |    BOX   | / 
+*---------* /              *---------* /''')
 
 print()
 print(playerNames)
@@ -53,4 +52,46 @@ else:
    carrotInFirstBox = False
 
 if carrotInFirstBox:
-   print
+    print('''
+   ___VV_____
+  |   VV     |
+  |   VV     |
+  |___||_____|               ____________
+ /    ||    /|              /           /|
+*----------* |             *----------*  |
+|   RED    | |             |    GOLD  |  |
+|   BOX    | /             |    BOX   | / 
+*---------* /              *---------* /
+  (carrot!)''')
+    print(playerNames)
+else:
+   print('''
+   __________
+  |          |
+  |          |
+  |__________|               ___________
+ /          /|              /          /|
+*---------*  |             *---------*  |
+|   RED    | |             |    GOLD  | |
+|   BOX    | /             |    BOX   | / 
+*---------* /              *---------* /
+(no carrot!)''')
+   print(playerNames)
+   
+input('Press Enter to continue...')
+
+print('\n' * 100) # Clear the screen by printing several newlines.
+print(p1Name + ', tell' + p2Name + ' to open their eyes.')
+input('Press Enter to continue...')
+
+print()
+print(p1Name + ', say one of the following sentences to ' + p2Name + '.')
+print(' 1) There is a carrot in my box.')
+print(' 2) There is not a carrot in my box.')
+print()
+input('Then press Enter to continue...')
+
+print()
+print(p2Name + ', do you want to sqap boxes with' + p1Name + '? YES/NO')
+while True:
+   response = input('> ').upper()
