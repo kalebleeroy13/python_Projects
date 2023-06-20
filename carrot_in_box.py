@@ -95,3 +95,60 @@ print()
 print(p2Name + ', do you want to sqap boxes with' + p1Name + '? YES/NO')
 while True:
    response = input('> ').upper()
+   if not (response.startswith('Y') or response.startswith('N')):
+      print(p2Name + ', please enter "YES" or "NO" .')
+   else:
+      break
+
+firstBox = 'RED ' #note the space after the "D".
+secondBox = 'GOLD' 
+
+if repsonse.startswith('Y'):
+   carrotInFirstBox = not carrotInFirstBox
+   firstBox, secondBox = secondBox, firstBox
+
+   print('''   
+  ___________                ____________
+ /          /|              /           /|
+*---------*  |             *---------*   |
+|   {}     | |             |  {}  |  |
+|   BOX    | /             |    BOX   | / 
+*---------* /              *---------* /'''.format(firstBox, secondBox))
+print(playerNames)
+
+input('Press Enter to reveal the winner...')
+print()
+
+if carrotInFirstBox:
+   print('''
+   ___VV_____                 __________
+  |   VV     |               |          |
+  |   VV     |               |          |
+  |___||_____|               |__________|
+ /    ||    /|              /          /|
+*---------*  |             *---------*  |
+|   {}     | |             |  {}      | |
+|   BOX    | /             |    BOX   | / 
+*---------* /              *---------* /  '''.format(firstBox, secondBox))
+
+else:
+   print('''
+   __________                 ___VV_____
+  |          |               |   VV     |
+  |          |               |   VV     |
+  |__________|               |___||_____|
+ /          /|              /    ||    /|
+*---------*  |             *---------*  |
+|   {}     | |             |  {}      | |
+|   BOX    | /             |    BOX   | / 
+*---------* /              *---------* / '''.format(firstBox, secondBox))
+
+print(playerNames)
+
+# This modification mad possible through the 'carrotInFirstBox' variable
+if carrotInFirstBox:
+   print(p1Name + ' is the winner!')
+else:
+   print(p2Name + 'is the winner!')
+
+print('Thanks for playing!')
