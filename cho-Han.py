@@ -6,7 +6,7 @@ Tags:short, beginer, game"""
 import random, sys
 
 JAPANESE_NUMBERS ={1: 'ICHI', 2: 'NI', 3: 'SAN',
-                  4: 'SHI', 5: 'GO', 6: ROKU}
+                  4: 'SHI', 5: 'GO', 6: 'ROKU'}
 
 print('''Cho-Han, by Al Sweigart al@inventwithpython.com
 
@@ -46,7 +46,7 @@ while True: #Main game loop.
     #Let the  player bet cho or han:
     while True:
         bet = input('> ').upper()
-        if bet != '  CHO' and bet != 'HAN' :
+        if bet != 'CHO' and bet != 'HAN' :
             print('Please enter either "CHO" or "HAN".')
             continue
         else:
@@ -62,7 +62,7 @@ while True: #Main game loop.
     if rollisEven:
         correctBet = 'CHO'
     else:
-        correctBet = 'Han'
+        correctBet = 'HAN'
 
     playerWon = bet = correctBet
 
