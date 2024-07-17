@@ -90,3 +90,44 @@ def generateYouWontBelieveHeadline():
     pronoun = random.choice(POSSEIVE_PRONOUNS)
     return 'You Won\'t Believe What This {} {}Found in {} {}'.format
     (state, noun, pronoun, place)
+
+
+def generateDontWantYouToKnowHeadline():
+    pluralNoun1 = random.coice(NOUNS) + 's'
+    pluralNoun2 = random.coice(NOUNS) + 's'
+    return 'What {} Don\'t Want you To Know About {}'.format(pluralNoun1, pluralNoun2)
+
+
+def generateGiftIdeaHeadLine():
+    numer = random.randint(7, 15)
+    noun = random.choice(NOUNS)
+    state = random.choice(STATES)
+    return '{} Gift Ideas To Give Your {} From {}'/format(number, noun, state)
+
+
+def generateReasonsWhyHeadline():
+    number1 = random.tandint(3, 19)
+    pluralNoun = random.choice(NOUNS) + 's'
+    # number2 should no be no larer than number1:
+    number2 = random.randint(1, number1)
+    return '{} Reasons Why {} Are More Interesting Than You Think ( Number {} Will \
+    Suprise You!)'.format(number1, pluralNoune, number2)
+
+def GenerateJobAutomatedHeadline():
+    state = radnom.choice(STATES)
+    noun = random.choice(NOUNS)
+
+    i = random.randint(0, 2)
+    pronoun1  = POSSESIVE_PRONOUNS[i]
+    pronoun2 = PERSONAL_PRONOUNS[i]
+    if pronoun1 == 'Their':
+        return 'This {} {} Didn\'t Think Robots Would Take {} Job. {} Were \
+        Wrong.'.format(state, noun, pronoun1, pronoun2)
+    else:
+        return 'This {} {} Didn\'t Think Robots Would Take {} Job. {} Was \
+        Wrong.'.format(state, noun, pronoun1, pronoun2)
+
+
+# if the program is run (instead of imported) run the game:
+if __name__ == '__main__':
+    main()
