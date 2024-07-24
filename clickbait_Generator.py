@@ -53,6 +53,8 @@ def main():
             headline = generateReasonsWhyHeadline()
         elif clickbaitType == 8:                
             headline = generateJobAutomatedHeadline()
+        elif clickbaitType == 9:
+            headline = generateSmallTownInHeadline()
 
         print(headline)
     print()
