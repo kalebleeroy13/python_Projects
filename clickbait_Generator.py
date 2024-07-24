@@ -17,6 +17,9 @@ NOUNS = ['Athletes', 'Clown', 'Shovel', 'Paleo Diet', 'Doctor', 'Parent',
 PLACES = ['House', 'Attic', 'Bank Deposit Box', 'School', 'Basement', 
             'Workplace', 'Donut Shop', 'Apocalypse Bunker']
 WHEN = ['Soon', 'This Year', 'Later Today', 'Right Now', 'Next Week']
+COUNTRIES = ['TUNISIA', 'BELGUIM', 'CHINA', 'ESTONIA', 'EL SALVADOR', 
+            'GUATEMALA', 'CHINA', 'NIGERIA', 'GREECE', 'SPAIN', 'CANADA',
+            'AMERICA', 'KOREA', 'PORTUGAL', 'BRAZIL']
 
 
 def main():
