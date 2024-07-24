@@ -38,7 +38,7 @@ def main():
             break # Exit the loop once a valid number is entered.
 
     for i in range(numberOfHeadlines):
-        clickbaitType = random.randint(1, 8)
+        clickbaitType = random.randint(1, 9)
 
         if clickbaitType == 1:
             headline = generateAreMillennialsKillingHeadline()
@@ -79,8 +79,6 @@ def generateWhatYouDontKnowHeadline():
     when = random.choice(WHEN)
     return 'Without This {}, {} Could kill you {}'.format(noun, pluralNoun, when)
 
-
-
 def generateBigCompaniesHateHerHeadline():
     pronoun = random.choice(OBJECT_PRONOUNS)
     state = random.choice(STATES)
@@ -101,13 +99,11 @@ def generateDontWantYouToKnowHeadline():
     pluralNoun2 = random.choice(NOUNS) + 's'
     return 'What {} Don\'t Want you To Know About {}'.format(pluralNoun1, pluralNoun2)
 
-
 def generateGiftIdeaHeadline():
     number = random.randint(7, 15)
     noun = random.choice(NOUNS)
     state = random.choice(STATES)
     return '{} Gift Ideas To Give Your {} From {}'.format(number, noun, state)
-
 
 def generateReasonsWhyHeadline():
     number1 = random.randint(3, 19)
@@ -127,6 +123,13 @@ def generateJobAutomatedHeadline():
         return 'This {} {} Didn\'t Think Robots Would Take {} Job. {} Were Wrong.'.format(state, noun, pronoun1, pronoun2)
     else:
         return 'This {} {} Didn\'t Think Robots Would Take {} Job. {} Was Wrong.'.format(state, noun, pronoun1, pronoun2)
+
+def generateSmallTownInHeadline():
+    country = random.choice(COUNTRIES)
+    number = random.randint(2, 19)
+    noun = random.choice(NOUNS)
+    place = random.choice(PLACES)
+    return '{} Small towns in {} have {}\'s sleeping in a {}.'.format(number, country, noun, place)
 
 
 # if the program is run (instead of imported) run the game:
