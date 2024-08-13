@@ -21,10 +21,10 @@ every starting number eventually terminates at 1.
 ''')
 
 print('Enter a starting number (greater than 0) or QUIT:')
-response = input('>')
+response = input('> ')
 
 if not response.isdecimal() or response == '0':
-    print('You must enter an interger greater than ')
+    print('You must enter an interger greater than 0.')
     sys.exit()
 
 n = int(response)
