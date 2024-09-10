@@ -25,7 +25,7 @@ nextCells = {}
 for x in range(WIDTH): # Loop over every possible column.
     for y in range(HEIGHT): # Loop over every possible row.
         # 50/50 chance for starting cells being alive or dead.
-        if random.radint(0,1) == 0:
+        if random.randint(0, 1) == 0:
             nextCells[(x,y)] = ALIVE # Add a living cell.
         else:
             nextCells[(x,y)] = DEAD # Add a dead cell.
@@ -41,7 +41,7 @@ while True: # Main program loop.
         for x in range(WIDTH):
             print(cells[(x, y)], end='') # Print the # or space.
         print() # print a newline at the end of the row.
-    print('Press Ctrl-c to quit.')
+    print('Press Ctrl-C to quit.')
 
     #calculate the next step's cels based on current step's cells:
     for x in range(WIDTH):
@@ -68,9 +68,9 @@ while True: # Main program loop.
             if cells [(left, below)] == ALIVE:
                 numNeighbors += 1 # Bottom-left neighbor is alive.
             if cells[(x, below)] == ALIVE:
-                numNeighbors +=1 #Bottom neighbor is alive.
+                numNeighbors += 1 #Bottom neighbor is alive.
             if cells[(right,below)] == ALIVE:
-                bumBeighbors +=1 # Bottom-right neighbor is alive 
+                numNeighbors += 1 # Bottom-right neighbor is alive 
             
             # Set cell based on conway's game of life rule
             if cells[(x, y)] == ALIVE and (numNeighbors == 2
