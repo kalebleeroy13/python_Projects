@@ -7,25 +7,26 @@ Tags: short, artistic, simulation"""
 import copy, random, sys, time
 
 # set up the consants:
-WIDTH = 79 # The width of the cell grid. 
+WIDTH = 70 # The width of the cell grid. 
 HEIGHT = 20 # The height of the cell grid. 
 
-#(!) Try changing Alive to '#' or nother character:
-ALIVE = '0' # The chracter representing a living cell.
-#(!) Try changing DEAD to '.' or another character:
-DEAD = ' '  # The character representing a dead cell
+ 
+ALIVE = '1' # chracter representing a living cell.
+ 
+DEAD = '0'  # character representing a dead cell
 
-# (!) Try changin Alice to '|' and DEAD to '-'.
 
 # The cells and nextCells are dictionareis for the state of the game. 
-# Their keys are (x,y)tup;es and their values are one of the Alive 
+# Their keys are (x,y)tuples and their values are one of the Alive 
 # or DEAD values
 nextCells = {}
 # Put random dead and alive cells into nextCells:
 for x in range(WIDTH): # Loop over every possible column.
     for y in range(HEIGHT): # Loop over every possible row.
+        # Generate a random probability for each cell
+        probability_alive = random.random()
         # 50/50 chance for starting cells being alive or dead.
-        if random.randint(0, 1) == 0:
+        if random.random() < probability_alive:
             nextCells[(x,y)] = ALIVE # Add a living cell.
         else:
             nextCells[(x,y)] = DEAD # Add a dead cell.
