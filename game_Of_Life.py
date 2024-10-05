@@ -15,6 +15,9 @@ ALIVE = '1' # chracter representing a living cell.
  
 DEAD = '0'  # character representing a dead cell
 
+# adding ability to read intial state from txt file and edit starting cell states
+def read_intial_state(file_path):
+
 
 # The cells and nextCells are dictionareis for the state of the game. 
 # Their keys are (x,y)tuples and their values are one of the Alive 
