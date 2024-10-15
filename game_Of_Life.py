@@ -4,89 +4,80 @@ More info at: https://en.wilkipedia.org/wiki/conway%27s_Game_of_Life
 View this code at  https://nostarch.com/big-book-small-python-projects
 Tags: short, artistic, simulation"""
 
-import copy, random, sys, time
+import copy
+import random
+import sys
+import time
 
-# set up the consants:
-WIDTH = 70 # The width of the cell grid. 
-HEIGHT = 20 # The height of the cell grid. 
+# Set up the constants
+WIDTH = 70  # The width of the cell grid
+HEIGHT = 20  # The height of the cell grid
+ALIVE = '1'  # Character representing a living cell
+DEAD = '0'   # Character representing a dead cell
 
- 
-ALIVE = '1' # chracter representing a living cell.
- 
-DEAD = '0'  # character representing a dead cell
+def read_initial_state(file_path):
+    """Load initial state from a text file."""
+    with open(file_path, 'r') as file:
+        grid = [list(line.strip()) for line in file]
+        return grid
 
-# adding ability to read intial state from txt file and edit starting cell states
-def read_intial_state(file_path):
+def print_grid(grid):
+    """Print the grid to the console."""
+    for row in grid:
+        print(''.join(row))
 
+def edit_grid(grid):
+    """Allow the user to toggle cells in the grid."""
+    while True:
+        print_grid(grid)
+        print("Enter the cell to toggle (row col) or 'done' to finish:")
+        user_input = input().strip()
+        if user_input.lower() == 'done':
+            break
+        try:
+            row, col = map(int, user_input.split())
+            grid[row][col] = ALIVE if grid[row][col] == DEAD else DEAD
+        except (ValueError, IndexError):
+            print("Invalid input. Please enter valid row and column numbers.")
 
-# The cells and nextCells are dictionareis for the state of the game. 
-# Their keys are (x,y)tuples and their values are one of the Alive 
-# or DEAD values
-nextCells = {}
-# Put random dead and alive cells into nextCells:
-for x in range(WIDTH): # Loop over every possible column.
-    for y in range(HEIGHT): # Loop over every possible row.
-        # Generate a random probability for each cell
-        probability_alive = random.random()
-        # 50/50 chance for starting cells being alive or dead.
-        if random.random() < probability_alive:
-            nextCells[(x,y)] = ALIVE # Add a living cell.
-        else:
-            nextCells[(x,y)] = DEAD # Add a dead cell.
+def get_neighbors(x, y, width, height):
+    """Get the coordinates of the neighbors of a cell."""
+    left = (x - 1) % width
+    right = (x + 1) % width
+    above = (y - 1) % height
+    below = (y + 1) % height
+    return [(left, above), (x, above), (right, above),
+            (left, y), (right, y),
+            (left, below), (x, below), (right, below)]
 
-while True: # Main program loop.
-
-
-    print('\n' * 50) # Seperate each step with newlines.
-    cells = copy.deepcopy(nextCells)
-
-    # Print cells on the screen: 
-    for y in range(HEIGHT):
-        for x in range(WIDTH):
-            print(cells[(x, y)], end='') # Print the # or space.
-        print() # print a newline at the end of the row.
-    print('Press Ctrl-C to quit.')
-
-    #calculate the next step's cels based on current step's cells:
+def update_grid(grid):
+    """Update the grid according to Conway's Game of Life rules."""
+    new_grid = copy.deepcopy(grid)
     for x in range(WIDTH):
         for y in range(HEIGHT):
-            # Get the neighboring coordinates of (x,y), even if they
-            #wrap around the edge:
-            left = (x - 1) % WIDTH
-            right = (x + 1) % WIDTH
-            above = (y - 1) % HEIGHT
-            below = (y + 1) % HEIGHT
-
-            # Count the number of living neighbors: 
-            numNeighbors = 0 
-            if cells[(left, above)] == ALIVE:
-                numNeighbors += 1 # Top-left neighbor is alive.
-            if cells[(x, above)] == ALIVE:
-                numNeighbors += 1 # Top neighbor is alive. 
-            if cells[(right, above)] == ALIVE:
-                numNeighbors += 1 # Top-right neighbor is alive. 
-            if cells[(left, y)] == ALIVE : 
-                numNeighbors += 1 #left neighbor is alive.
-            if cells[(right, y)] == ALIVE:
-                numNeighbors += 1 # Right neighbor is alive. 
-            if cells [(left, below)] == ALIVE:
-                numNeighbors += 1 # Bottom-left neighbor is alive.
-            if cells[(x, below)] == ALIVE:
-                numNeighbors += 1 #Bottom neighbor is alive.
-            if cells[(right,below)] == ALIVE:
-                numNeighbors += 1 # Bottom-right neighbor is alive 
-            
-            # Set cell based on conway's game of life rule
-            if cells[(x, y)] == ALIVE and (numNeighbors == 2
-                or numNeighbors == 3):
-                    # Living cells with 2 or 3 neighbors stay alive:
-                    nextCells[(x, y )] = ALIVE
-            elif cells[(x, y)] == DEAD and numNeighbors == 3:
-                # DEAD cells with 3 neighbors become alive:
-                nextCells[(x, y)] = ALIVE
+            alive_neighbors = sum(1 for nx, ny in get_neighbors(x, y, WIDTH, HEIGHT) if grid[ny][nx] == ALIVE)
+            if grid[y][x] == ALIVE:
+                if alive_neighbors < 2 or alive_neighbors > 3:
+                    new_grid[y][x] = DEAD
             else:
-                    # Everything else dies of stays dead:
-                    nextCells[(x,y)] = DEAD
+                if alive_neighbors == 3:
+                    new_grid[y][x] = ALIVE
+    return new_grid
+
+# Initialize the grid
+try:
+    grid = read_initial_state('initial_state.txt')
+except FileNotFoundError:
+    print("File not found. Initializing with random states.")
+    grid = [[ALIVE if random.random() < 0.5 else DEAD for _ in range(WIDTH)] for _ in range(HEIGHT)]
+
+edit_grid(grid)
+
+while True:
+    print('\n' * 50)  # Clear the screen
+    print_grid(grid)   # Display the current grid
+    grid = update_grid(grid)  # Update the grid for the next generation
+    time.sleep(1)  # Pause for visualization
 
     try:
         time.sleep(1) #Add a 1 second pause to reduce flickering.
