@@ -10,7 +10,7 @@ import sys
 import time
 
 # Set up the constants
-WIDTH = 70  # The width of the cell grid
+WIDTH = 50  # The width of the cell grid
 HEIGHT = 20  # The height of the cell grid
 ALIVE = '1'  # Character representing a living cell
 DEAD = '0'   # Character representing a dead cell
