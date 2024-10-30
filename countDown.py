@@ -26,8 +26,8 @@ try:
         # And 7265 % 60 is 5 seconds:
         seconds = str(secondsLeft % 60)
 
-        # Get the digit strings from the secseg module:
-        hDigits = secseg.getSevSegStr(hours, 2)
+        # Get the digit strings from the sevseg module:
+        hDigits = sevseg.getSevSegStr(hours, 2)
         hTopRow, hMiddleRow, hBottomRow = hDigits.splitlines()
 
         mDigits = sevseg.getSevSegStr(minutes, 2)
