@@ -7,8 +7,8 @@ Tags: tiny, beginner, scrolling, artistice"""
 import random, sys, time
 
 # Set up the constants:
-WIDTH = 70 # (!) try changin this to 10 or 30.
-PAUSE_AMOUNT = 0.05 # (!) Try changing this to 0 or 1.0.
+WIDTH = 45 
+PAUSE_AMOUNT = .08
 
 print('Deep Cave, by Al Sweigart al@inventwithpython.com')
 print('Press Ctrl-C to stop.')
