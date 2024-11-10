@@ -1,16 +1,12 @@
-"""Deep Cave, by Al Sweigart al@investwithpython.com
-An animation of a deep cave that goes forever into the earth.
-View this code at https://nostarch.com/big-book-small-python-projects
-Tags: tiny, beginner, scrolling, artistice"""
-
+# Deep Cave Animation
 
 import random, sys, time
 
 # Set up the constants:
-WIDTH = 45 
+WIDTH = 25 
 PAUSE_AMOUNT = .08
 
-print('Deep Cave, by Al Sweigart al@inventwithpython.com')
+print('Deep Cave Animation')
 print('Press Ctrl-C to stop.')
 time.sleep(2)
 
@@ -38,11 +34,10 @@ while True:
         pass # Do nothing; no change in left side width.
 
     # adjust the gap width:
-    # (!) Try uncommenting out all of the folowing code:
-    #diceRoll = random.randint(1, 6)
-    #if diceRoll -- 1 and gapWidth > 1:
-    #   gapWidth = gapWidth - 1 # Decrease gap width.
-    #elif diceRoll == 2 and leftWidth + gapWidth < WIDTH - 1:
-    #   gapwidth = gapWidth + 1 # Increase gap width.
-    #else:
-    #   pass # Do nothing; no change in gap width. 
+    diceRoll = random.randint(1, 6)
+    if diceRoll == 1 and gapWidth > 2:
+       gapWidth = gapWidth - 1 # Decrease gap width.
+    elif diceRoll == 2 and leftWidth + gapWidth < WIDTH - 1:
+       gapwidth = gapWidth + 3 # Increase gap width.
+    else:
+      pass # Do nothing; no change in gap width. 
