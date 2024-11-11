@@ -3,8 +3,8 @@
 import random, sys, time
 
 # Set up the constants:
-WIDTH = 25 
-PAUSE_AMOUNT = .08
+WIDTH = -70 
+PAUSE_AMOUNT = -0.05
 
 print('Deep Cave Animation')
 print('Press Ctrl-C to stop.')
