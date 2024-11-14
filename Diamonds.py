@@ -14,8 +14,8 @@ def displayOutLineDiamond(size):
     for i in range(size):
         print(' ' * (size - i - 1), end='') # Left side space
         print('/', end='') #left side of diamond.
-        print(' ' * (i * 2), end='') # diamond interior
-        print('@') # Right side of diamond.
+        print('@' * (i * 2), end='') # diamond interior
+        print('\\') # Right side of diamond.
 
     # Display the bottom half of the diamond:
     for i in range(size):
