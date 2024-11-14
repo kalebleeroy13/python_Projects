@@ -1,41 +1,29 @@
 def main():
-    print('Diamond pattern')
+    print('Rectangle pattern')
 
-    # Display diamonds of sizes 0 through 6:
-    for diamondSize in range(0,6):
-        displayOutLineDiamond(diamondSize)
+    # Display rectangles of different sizes:
+    for width, height in [(6, 3), (10, 4), (12, 5)]:
+        displayOutLineRectangle(width, height)
         print() # Prints newline
-        displayFilledDiamond(diamondSize)
+        displayFilledRectangle(width, height)
         print() # Prints newline
 
 
-def displayOutLineDiamond(size): 
-    # displays the top half of diamond:
-    for i in range(size):
-        print(' ' * (size - i - 1), end='') # Left side space
-        print('/', end='') #left side of diamond.
-        print('@' * (i * 2), end='') # diamond interior
-        print('\\') # Right side of diamond.
+def displayOutLineRectangle(width, height): 
+    # displays the top half of rectangle:
+    print('+' + '-' * (width - 2) + '+')
 
-    # Display the bottom half of the diamond:
-    for i in range(size):
-        print(' ' * i, end='') # Left side space
-        print('\\', end='') #left side of diamond. 
-        print(' ' * ((size - i - 1) * 2), end='') # Diamond interior
-        print('/' ) #Right side of diamond. 
+    # Display sides of rectangle:
+    for _ in range(height -2):
+        print('|' + ' ' * (width - 2) + '|')
 
-def displayFilledDiamond(size):
-    # Display the top half of the diamond:
-    for i in range(size):
-        print(' ' * (size - i - 1), end='') #left side space.
-        print('/' * (i + 1), end='') # Left half of diamond. 
-        print('\\' * (i + 1)) # Right half of diamond.
-
-    # Display bottom half of diamond:
-    for i in range(size):
-        print(' ' * i, end='') # Left side space.
-        print('\\' * (size - i ), end='') # Left side diamond.
-        print('/' * (size - i)) # Right side diamond.
+    # Display bottom of rectangle
+    print('+' + '-' * (width - 2) + '+')
+        
+def displayFilledRectangle(width, height):
+    # Display filled rectangles:
+    for _ in range(height):
+        print('#' * width)
 
 # if this program was run (instead of imported), run the game:
 if __name__ == '__main__':
