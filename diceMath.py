@@ -42,3 +42,41 @@ D3a = (['+-------+',
         '|   0   |',
         '|     0 |',
         '+-------+'], 3)
+
+D3b = (['+-------+',
+        '|     0 |',
+        '|   0   |',
+        '| 0     |',
+        '+-------+'], 3)
+
+D4 = (['+-------+',
+       '| 0   0 |',
+       '|       |',
+       '| 0   0 |',
+       '+-------+'], 4)
+
+D5 = (['+-------+',
+       '| 0   0 |',
+       '|   0   |',
+       '| 0   0 |',
+       '+-------+'], 5)
+
+D6 = (['+-------+',
+       '| 0   0 |',
+       '| 0   0 |',
+       '| 0   0 |',
+       '+-------+'], 6)
+
+D6b = (['+-------+',
+        '| 0 0 0 |',
+        '|       |',
+        '| 0 0 0 |',
+        '+-------+'], 6)
+
+ALL_DICE = [D1, D2a, D2b, D3b, D4, D5, D6a, D6b]
+
+print('''Dice Math
+Add up the sides of all the dice displayed on the screen. 
+You have {} seconds to answer as many as possible. You get {} points for each
+correct answer and lose {} points for each incorrect answer.'''.format(QUIZ_DURATION, REWARD, PENALTY))
+input('Press enter to begin...')
