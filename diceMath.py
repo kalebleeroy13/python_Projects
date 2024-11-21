@@ -81,12 +81,14 @@ You have {} seconds to answer as many as possible. You get {} points for each
 correct answer and lose {} points for each incorrect answer.'''.format(QUIZ_DURATION, REWARD, PENALTY))
 input('Press enter to begin...')
 
+#keep track of how many answers were correct and incorrect:
 correctAnswers = 0
 incorrectAnswers = 0
 startTime = time.time()
 
 try:
     while time.time() < startTime + QUIZ_DURATION:  # main loop.
+        # dice generation
         sumAnswer = 0
         diceFaces = []
         for i in range(random.randint(MIN_DICE, MAX_DICE)):
@@ -96,6 +98,7 @@ try:
         
         topLeftDiceCorners = []
         
+        # Dice placement
         for i in range(len(diceFaces)):
             while True:
                 left = random.randint(0, CANVAS_WIDTH - 1 - DICE_WIDTH)
@@ -110,6 +113,7 @@ try:
                 bottomRightX = left + DICE_WIDTH
                 bottomRightY = top + DICE_HEIGHT
                 
+                # check for overlap between die
                 overlaps = False 
                 for prevDieLeft, prevDieTop in topLeftDiceCorners:
                     prevDieRight = prevDieLeft + DICE_WIDTH
@@ -125,6 +129,9 @@ try:
                     topLeftDiceCorners.append((left, top))
                     break
         
+
+
+        #loop over die
         canvas = {}
         for i, (dieLeft, dieTop) in enumerate(topLeftDiceCorners):
             dieFace = diceFaces[i]
@@ -134,11 +141,13 @@ try:
                     canvasY = dieTop + dy
                     canvas[(canvasX, canvasY)] = dieFace[dy][dx]
 
+        # canvas display on-screen
         for cy in range(CANVAS_HEIGHT):
             for cx in range(CANVAS_WIDTH):
                 print(canvas.get((cx, cy), ' '), end='')
             print()
         
+        # player answer
         response = input('Enter the sum: ').strip()
         if response.isdecimal() and int(response) == sumAnswer:
             correctAnswers += 1
