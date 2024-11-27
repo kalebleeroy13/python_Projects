@@ -73,7 +73,19 @@ D6b = (['+-------+',
         '| 0 0 0 |',
         '+-------+'], 6)
 
-ALL_DICE = [D1, D2a, D2b, D3a, D3b, D4, D5, D6a, D6b]
+D7a = (['+-------+',
+        '| 0 0 0 |',
+        '|   0   |',
+        '| 0 0 0 |',
+        '+-------+'], 7)
+
+D7b = (['+-------+',
+        '| 0   0 |',
+        '| 0 0 0 |',
+        '| 0   0 |',
+        '+-------+'], 7)       
+
+ALL_DICE = [D1, D2a, D2b, D3a, D3b, D4, D5, D6a, D6b, D7a, D7b]
 
 print('''Dice Math
 Add up the sides of all the dice displayed on the screen. 
