@@ -38,4 +38,43 @@ while True: # Main program Loop:
         if modIndex == -1:
             numberOfSides = diceStr[dIndex + 1 :]
         else:
-            numberOfSides
+            numberOfSides = diceStr[dindex + 1 : modIndex]
+        if not numberOfSides.isdecimal():
+            raise Exception('Missing the number of sides.')
+        numberOfSides = int(numberOfSides)
+
+        # Find the modifier amount. (The "1" in "3d6+1"):
+        if modIndex == -1:
+            modAmount = 0
+        else:
+            modAmount = int(diceStr[modIndex + 1])
+            if diceStr[modIndex] == '-':
+                #Change the modification amount to negative
+                modAmount = - modAmount
+            
+                
+        # Simulate the dice rolls:
+        rolls = []
+        for i in range(numberOfDice):
+            rollResult = random.randint(1, numberOfSides)
+            rolls.append(rollResult)
+
+        #Display the total:
+        print('Total:', sum(rolls) + modAmount, '(Each die:', end='')
+
+        # Display the individual rolls:
+        for i, roll in enumerate(rolls):
+            rolls[i] = str(roll)
+        print(', '.join(rolls), end='')
+
+        # Display the modifier amount:
+        if modAmount != 0:
+            modSign = diceStr[modIndex]
+            print(', {}{}',format(modSign, abs(modAmount)), end='')
+        print(')')
+
+    except Exception as exc:
+        # Catch any exceptionsand display the message to the message to the user:
+        print('Invalid input. Enter something like "3d6" or ')
+        print('input was invalid because: ' + str(exc))
+        continue # Go back to the dice string prompt.
