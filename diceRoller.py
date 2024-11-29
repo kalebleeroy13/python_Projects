@@ -5,13 +5,15 @@ print('''Dungeon & Dragons dice roller
 
 Enter what kind and how many dice to roll. The format is the number of
 dice, followed by the "d", followed by the number of sides the dice have.
-You can also add a plus, minus, or multiplication adjustment.
+You can also add a plus, minus, or multiplication adjustment, and an
+option to remove the lowest die roll.
 
 Ex:
     3d6 rolls three 6-sided dice
     1d10+2 rolls one 10-sided die, and adds 2
     2d38-1 rolls two 38-sided dice, and subtracts 1
     2d20*2 rolls two 20-sided dice, and multiplies the result by 2
+    4d6-r rolls four 6-sided dice, and removes the lowest roll
     QUIT quits the program
 ''')
 
@@ -26,6 +28,12 @@ while True:  # Main program loop:
         # Clean up the dice string:
         diceStr = diceStr.lower().replace(' ', '')
 
+        # Check if we need to remove the lowest roll
+        removeLowest = False
+        if '-r' in diceStr:
+            removeLowest = True
+            diceStr = diceStr.replace('-r', '')
+
         # Find the "d" in the dice string input:
         dIndex = diceStr.find('d')
         if dIndex == -1:
@@ -38,7 +46,10 @@ while True:  # Main program loop:
         numberOfDice = int(numberOfDice)
 
         # Find if there is a plus, minus, or multiplication sign for a modifier:
-        modIndex = max(diceStr.find('+'), diceStr.find('-'), diceStr.find('*'))
+        plusIndex = diceStr.find('+')
+        minusIndex = diceStr.find('-')
+        multiplyIndex = diceStr.find('*')
+        modIndex = max(plusIndex, minusIndex, multiplyIndex)
 
         # Find the number of sides. (The "6" in "3d6+1"):
         if modIndex == -1:
@@ -62,6 +73,11 @@ while True:  # Main program loop:
         for i in range(numberOfDice):
             rollResult = random.randint(1, numberOfSides)
             rolls.append(rollResult)
+
+        # Remove the lowest roll if needed:
+        if removeLowest:
+            print(f'Removing the lowest roll: {min(rolls)}')
+            rolls.remove(min(rolls))
 
         # Calculate the total:
         total = sum(rolls)
