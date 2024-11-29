@@ -75,7 +75,7 @@ while True: # Main program Loop:
         # Display the modifier amount:
         if modAmount != 0:
             modSign = diceStr[modIndex]
-            print(', {}{}',format(modSign, abs(modAmount)), end='')
+            print(', {}{}'.format(modSign, abs(modAmount)), end='')
         print(')')
 
     except Exception as exc:
