@@ -24,7 +24,7 @@ while True: # Main program Loop:
         diceStr = diceStr.lower().replace(' ', '')
 
         # Find the "d" in the dice string input:
-        dIndex == diceStr.find('d')
+        dIndex = diceStr.find('d')
         if dIndex == -1:
             raise Exception('Missing the "d" character.')
 
@@ -33,6 +33,11 @@ while True: # Main program Loop:
         if not numberOfDice.isdecimal():
             raise Exception('Missing the number of dice.')
         numberOfDice = int(numberOfDice)
+
+        #find if there is a plus or minus sign for a modifier:
+        modIndex = diceStr.find('+')
+        if modIndex == -1:
+            modIndex = diceStr.find('-')
 
         # Find the number of sides. (the "6 in 3d6+1"):
         if modIndex == -1:
@@ -47,10 +52,10 @@ while True: # Main program Loop:
         if modIndex == -1:
             modAmount = 0
         else:
-            modAmount = int(diceStr[modIndex + 1])
+            modAmount = int(diceStr[modIndex + 1 :])
             if diceStr[modIndex] == '-':
                 #Change the modification amount to negative
-                modAmount = - modAmount
+                modAmount = -modAmount
             
                 
         # Simulate the dice rolls:
