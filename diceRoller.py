@@ -5,12 +5,13 @@ print('''Dungeon & Dragons dice roller
 
 Enter what kind and how many dice to roll. The format is the number of
 dice, followed by the "d", followed by the number of sides the dice have.
-You can also add a plus or minus adjustment.
+You can also add a plus, minus, or multiplication adjustment.
 
 Ex:
     3d6 rolls three 6-sided dice
     1d10+2 rolls one 10-sided die, and adds 2
     2d38-1 rolls two 38-sided dice, and subtracts 1
+    2d20*2 rolls two 20-sided dice, and multiplies the result by 2
     QUIT quits the program
 ''')
 
@@ -36,10 +37,8 @@ while True:  # Main program loop:
             raise Exception('Missing the number of dice.')
         numberOfDice = int(numberOfDice)
 
-        # Find if there is a plus or minus sign for a modifier:
-        modIndex = diceStr.find('+')
-        if modIndex == -1:
-            modIndex = diceStr.find('-')
+        # Find if there is a plus, minus, or multiplication sign for a modifier:
+        modIndex = max(diceStr.find('+'), diceStr.find('-'), diceStr.find('*'))
 
         # Find the number of sides. (The "6" in "3d6+1"):
         if modIndex == -1:
@@ -53,11 +52,10 @@ while True:  # Main program loop:
         # Find the modifier amount. (The "1" in "3d6+1"):
         if modIndex == -1:
             modAmount = 0
+            modOperator = None
         else:
             modAmount = int(diceStr[modIndex + 1:])
-            if diceStr[modIndex] == '-':
-                # Change the modification amount to negative
-                modAmount = -modAmount
+            modOperator = diceStr[modIndex]
 
         # Simulate the dice rolls:
         rolls = []
@@ -65,18 +63,24 @@ while True:  # Main program loop:
             rollResult = random.randint(1, numberOfSides)
             rolls.append(rollResult)
 
+        # Calculate the total:
+        total = sum(rolls)
+        if modOperator == '+':
+            total += modAmount
+        elif modOperator == '-':
+            total -= modAmount
+        elif modOperator == '*':
+            total *= modAmount
+
         # Display the total:
-        print('Total:', sum(rolls) + modAmount, '(Each die:', end='')
+        print('Total:', total, '(Each die:', end=' ')
 
         # Display the individual rolls:
-        for i, roll in enumerate(rolls):
-            rolls[i] = str(roll)
-        print(', '.join(rolls), end='')
+        print(', '.join(map(str, rolls)), end='')
 
         # Display the modifier amount:
         if modAmount != 0:
-            modSign = diceStr[modIndex]
-            print(', {}{}'.format(modSign, abs(modAmount)), end='')
+            print(', {}{}'.format(modOperator, abs(modAmount)), end='')
         print(')')
 
     except Exception as exc:
