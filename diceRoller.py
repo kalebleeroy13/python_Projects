@@ -43,7 +43,7 @@ while True: # Main program Loop:
         if modIndex == -1:
             numberOfSides = diceStr[dIndex + 1 :]
         else:
-            numberOfSides = diceStr[dindex + 1 : modIndex]
+            numberOfSides = diceStr[dIndex + 1 : modIndex]
         if not numberOfSides.isdecimal():
             raise Exception('Missing the number of sides.')
         numberOfSides = int(numberOfSides)
@@ -79,7 +79,7 @@ while True: # Main program Loop:
         print(')')
 
     except Exception as exc:
-        # Catch any exceptionsand display the message to the message to the user:
+        # Catch any exceptions and display the message to the message to the user:
         print('Invalid input. Enter something like "3d6" or ')
         print('input was invalid because: ' + str(exc))
         continue # Go back to the dice string prompt.
