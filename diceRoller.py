@@ -16,6 +16,7 @@ Enter what kind and how many dice to roll. the format is the number of
 while True: # Main program Loop:
     try:
         diceStr = input('> ') # the prompt to enter the dice string
+
         if diceStr.upper() == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
