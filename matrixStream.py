@@ -4,7 +4,7 @@ import random, shutil, sys, time
 MIN_STREAM_LENGTH = 6 # min distance
 MAX_STREAM_LENGTH = 20 # max distance
 PAUSE = 0.1 # changes speed of stream
-STREAM_CHARS = ['0', '1'] # characters of the stream
+STREAM_CHARS = ['0', '1', '2', '3', '4'] # characters of the stream
 
 # Density can range from 0.0 to 1.0
 DENSITY = 0.02 # (!) try changing this to 0.10 or 0.30
