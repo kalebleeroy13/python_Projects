@@ -37,6 +37,7 @@ try:
                 columns[i] -= 1
             else:
                 print(' ', end='')
+                
         print() #print a newline at the end of the row of columns.
         sys.stdout.flush() # Make sure text appears on the screen.
         time.sleep(PAUSE)
