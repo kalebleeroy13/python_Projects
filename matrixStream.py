@@ -12,9 +12,6 @@ DENSITY = 0.02 # (!) try changing this to 0.10 or 0.30
 # Get the size of the terminal window:
 WIDTH = shutil.get_terminal_size()[0]
 
-# can't print to the last column on Windows without it adding 
-# a newline automatically, so reduce the width by one:
-WIDTH -= 1
 
 print('Matrix Stream')
 print('press Ctrl-C to quit.')
@@ -31,17 +28,17 @@ try:
             if columns[i] == 0:
                 if random.random() <= DENSITY:
                     # Restart a stream on this column.
-                    column[i] = rndom.randint(MIN_STREAM_LENGTH, 
+                    columns[i] = random.randint(MIN_STREAM_LENGTH, 
                                                 MAX_STREAM_LENGTH)
 
-                # Display an empty space or a 1/0 character.
-                if columns[i] > 0:
-                    print(random.choice(STREAM_CHARS), end='')
-                    columns[i] -= 1
-                else:
-                    print(' ', end='')
-                print() #print a newline at the end of the row of columns.
-                sys.stdout.flush() # Make sure text appears on the screen.
-                time.sleep(PAUSE)
+            # Display an empty space or a 1/0 character.
+            if columns[i] > 0:
+                print(random.choice(STREAM_CHARS), end='')
+                columns[i] -= 1
+            else:
+                print(' ', end='')
+        print() #print a newline at the end of the row of columns.
+        sys.stdout.flush() # Make sure text appears on the screen.
+        time.sleep(PAUSE)
 except KeyboardInterrupt:
-    sys.ecit() # When Ctrl-C is hit , end program
+    sys.exit() # When Ctrl-C is hit , end program
