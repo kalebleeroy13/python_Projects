@@ -7,7 +7,7 @@ PAUSE = 0.1 # changes speed of stream
 STREAM_CHARS = ['0', '1', '2', '3', '\u25B2', '\u2666', '\u25CF', '\u25AD'] # characters of the stream
 
 # Density can range from 0.0 to 1.0
-DENSITY = 0.02 # (!) try changing this to 0.10 or 0.30
+DENSITY = 0.02 # 
 
 # Get the size of the terminal window:
 WIDTH = shutil.get_terminal_size()[0]
