@@ -144,6 +144,19 @@ class Duckling:
                 if self.body == CHUBBY:
                     bodyStr += ' '
                 elif self.body == VERY_CHUBBY:
-                    bodyStr += ' '
+                    bodyStr += '  '
 
         bodyStr += ')' # Get the right side of the body.
+
+        if self.body == CHUBBY:
+            # get an extra space so chubby ducklings are the same
+            # width as very chubby ducklings.
+            bodyStr += ' '
+        return bodyStr
+    
+    def getFeetStr(self):
+        """Returns the string of the duckling's feet."""
+        if self.body == CHUBBY:
+            return ' ^^  '
+        elif self.body == VERY_CHUBBY:
+            return ' ^ ^ '
