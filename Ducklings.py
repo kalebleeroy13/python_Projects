@@ -55,13 +55,13 @@ def main():
                  # Draw five spaces since ther is no duckling here.
                  print(' ' * DUCKLING_WIDTH, end='')
 
-    print() # Print a newline.
-    sys.stdout.flush() # Make sure text appears on the screen
-    time. sleep(PAUSE)
+        print() # Print a newline.
+        sys.stdout.flush() # Make sure text appears on the screen
+        time.sleep(Pause)
 
 
 class Duckling:
-    def __init__(self)
+    def __init__(self):
         """Create a new duckling with random body features."""
         self.direction = random.choice([LEFT, RIGHT])
         self.body = random.choice([CHUBBY, VERY_CHUBBY])
@@ -114,3 +114,36 @@ class Duckling:
                 headStr += '^^'
             elif self.eyes == ALOOF:
                 headStr += '``'
+
+        if self.body == CHUBBY:
+            # Get extra space so chubby ducklings are the 
+            # width as very chubby ducklings.
+            headStr += ' '
+
+            return headStr
+        
+        def getBodyStr(self):
+            """Returns the string of the duckling's body."""
+            bodyStr = '(' # Get the left side of the body.
+            if self.direction == LEFT:
+                # Get the interior body space:
+                if self.body == CHUBBY:
+                    bodyStr += ' '
+                elif self.body == VERY_CHUBBY:
+                    bodyStr += ' '
+
+                # get wings:
+                if self.wing == OUT:
+                    bodyStr += '>'
+                elif self.wing == UP:
+                    bodyStr += '^'
+                elif self.wing == DOWN:
+                    bodyStr += 'v'
+
+                # Get the interior body space:
+                if self.body == CHUBBY:
+                    bodyStr += ' '
+                elif self.body == VERY_CHUBBY:
+                    bodyStr += ' '
+
+        bodyStr += ')' # Get the right side of the body.
