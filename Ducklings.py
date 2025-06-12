@@ -120,7 +120,7 @@ class Duckling:
             # width as very chubby ducklings.
             headStr += ' '
 
-            return headStr
+        return headStr
         
     def getBodyStr(self):
             """Returns the string of the duckling's body."""
