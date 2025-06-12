@@ -101,7 +101,7 @@ class Duckling:
             headStr += ') ' # Get the back of the head.
 
         if self.direction == RIGHT:
-            headStr += '(' # Get the back of the head
+            headStr += ' (' # Get the back of the head
 
             # Get the eyes:
             if self.eyes == BEADY and self.body == CHUBBY:
