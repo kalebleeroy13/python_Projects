@@ -43,7 +43,7 @@ def main():
             if (ducklingObj == None and random.random() <= Density):
                     # Place a duckling in this lane:
                     ducklingObj = Duckling()
-                    ducklingLanes[laneNum] =ducklingObj
+                    ducklingLanes[laneNum] = ducklingObj
 
             if ducklingObj != None:
                  # Draw a duckling if there is one in this lane:
@@ -122,7 +122,7 @@ class Duckling:
 
             return headStr
         
-        def getBodyStr(self):
+    def getBodyStr(self):
             """Returns the string of the duckling's body."""
             bodyStr = '(' # Get the left side of the body.
             if self.direction == LEFT:
@@ -146,13 +146,14 @@ class Duckling:
                 elif self.body == VERY_CHUBBY:
                     bodyStr += '  '
 
-        bodyStr += ')' # Get the right side of the body.
+            bodyStr += ')' # Get the right side of the body.
 
-        if self.body == CHUBBY:
-            # get an extra space so chubby ducklings are the same
-            # width as very chubby ducklings.
-            bodyStr += ' '
-        return bodyStr
+            if self.body == CHUBBY:
+                # get an extra space so chubby ducklings are the same
+                # width as very chubby ducklings.
+                bodyStr += ' '
+                
+            return bodyStr
     
     def getFeetStr(self):
         """Returns the string of the duckling's feet."""
@@ -161,7 +162,7 @@ class Duckling:
         elif self.body == VERY_CHUBBY:
             return ' ^ ^ '
         
-        def getNextBodyPart(self):
+    def getNextBodyPart(self):
             """Calls th appropriate display method for the next body
             part that needs to be displyaed. Sets partTo DisplayNext
             to None when finished. """
