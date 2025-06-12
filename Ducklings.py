@@ -178,7 +178,7 @@ class Duckling:
 
 
 # If this program was run (instead of imported), run the game:
-if __name__ == ' __main__':
+if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
