@@ -160,3 +160,26 @@ class Duckling:
             return ' ^^  '
         elif self.body == VERY_CHUBBY:
             return ' ^ ^ '
+        
+        def getNextBodyPart(self):
+            """Calls th appropriate display method for the next body
+            part that needs to be displyaed. Sets partTo DisplayNext
+            to None when finished. """
+            if self.partToDisplayNext == HEAD:
+                self.partToDisplayNext = BODY
+                return self.getHeadStr()
+            elif self.partToDisplayNext == BODY:
+                self.partToDisplayNext = FEET
+                return self.getBodyStr()
+            elif self.partToDisplayNext == FEET:
+                self.partToDisplayNext = None
+                return self.getFeetStr()
+            
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == ' __main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-c is pressed, end the program.
