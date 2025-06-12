@@ -105,15 +105,21 @@ class Duckling:
 
             # Get the eyes:
             if self.eyes == BEADY and self.body == CHUBBY:
-                headStr += '"'
+                headStr += ' " '
             elif self.eyes == BEADY and self.body == VERY_CHUBBY:
                 headStr += ' "'
             elif self.eyes == WIDE:
-                headStr += "''"  
+                headStr += " '' "  
             elif self.eyes == HAPPY:
                 headStr += '^^'
             elif self.eyes == ALOOF:
                 headStr += '``'
+
+            # Get mouth:
+            if self.mouth == OPEN:
+                headStr += '<'
+            elif self.mouth == CLOSED:
+                headStr += '='
 
         if self.body == CHUBBY:
             # Get extra space so chubby ducklings are the 
