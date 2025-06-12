@@ -37,7 +37,7 @@ def main():
 
     ducklingLanes = [None] * (WIDTH // DUCKLING_WIDTH)
 
-    while True: # Main progam loop.
+    while True: # Main program loop.
         for laneNum, ducklingObj in enumerate(ducklingLanes):
             # See if we should create a duckling in this lane
             if (ducklingObj == None and random.random() <= Density):
@@ -52,7 +52,7 @@ def main():
                  if ducklingObj.partToDisplayNext == None:
                       ducklingLanes[laneNum] = None
             else:
-                 # Draw five spaces since ther is no duckling here.
+                 # Draw five spaces since there is no duckling here.
                  print(' ' * DUCKLING_WIDTH, end='')
 
         print() # Print a newline.
@@ -152,7 +152,7 @@ class Duckling:
                 # get an extra space so chubby ducklings are the same
                 # width as very chubby ducklings.
                 bodyStr += ' '
-                
+
             return bodyStr
     
     def getFeetStr(self):
@@ -163,8 +163,8 @@ class Duckling:
             return ' ^ ^ '
         
     def getNextBodyPart(self):
-            """Calls th appropriate display method for the next body
-            part that needs to be displyaed. Sets partTo DisplayNext
+            """Calls the appropriate display method for the next body
+            part that needs to be displayed. Sets partToDisplayNext
             to None when finished. """
             if self.partToDisplayNext == HEAD:
                 self.partToDisplayNext = BODY
