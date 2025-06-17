@@ -23,7 +23,8 @@ BODY = 'body'
 FEET = 'feet'
 
 # find terminal window size:
-WIDTH = max(shutil.get_terminal_size()[0] - 1, DUCKLING_WIDTH)
+WIDTH = max(shutil.get_terminal_size()[0] - 1, DUCKLING_WIDTH * 2)
+
 
 
 
@@ -98,7 +99,7 @@ class Duckling:
 
             # Get the eyes:
             if self.eyes == BEADY and self.body == CHUBBY:
-                headStr += ' " '
+                headStr += '"'
             elif self.eyes == BEADY and self.body == VERY_CHUBBY:
                 headStr += ' "'
             elif self.eyes == WIDE:
