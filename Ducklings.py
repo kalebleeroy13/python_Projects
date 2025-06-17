@@ -23,10 +23,8 @@ BODY = 'body'
 FEET = 'feet'
 
 # find terminal window size:
-WIDTH = shutil.get_terminal_size()[0]
-# We can't print to the last column on windows without it adding a 
-# newline automatically, so reduce the width by one:
-WIDTH -= 1
+WIDTH = max(shutil.get_terminal_size()[0] - 1, DUCKLING_WIDTH)
+
 
 
 def main():
@@ -38,22 +36,17 @@ def main():
     ducklingLanes = [None] * (WIDTH // DUCKLING_WIDTH)
 
     while True: # Main program loop.
-        for laneNum, ducklingObj in enumerate(ducklingLanes):
-            # See if we should create a duckling in this lane
-            if (ducklingObj == None and random.random() <= Density):
-                    # Place a duckling in this lane:
-                    ducklingObj = Duckling()
-                    ducklingLanes[laneNum] = ducklingObj
+        for laneNum in range(len(ducklingLanes)):  # Loop through indices directly
+            if ducklingLanes[laneNum] is None and random.random() <= Density:
+                ducklingLanes[laneNum] = Duckling()  # Now the list entry is updated correctly
 
-            if ducklingObj != None:
-                 # Draw a duckling if there is one in this lane:
-                 print(ducklingObj.getNextBodyPart(), end='')
-                 # Delete the duckling if finished drawing :
-                 if ducklingObj.partToDisplayNext == None:
-                      ducklingLanes[laneNum] = None
+            if ducklingLanes[laneNum] is not None:
+                print(ducklingLanes[laneNum].getNextBodyPart(), end='')
+                if ducklingLanes[laneNum].partToDisplayNext is None:
+                    ducklingLanes[laneNum] = None
             else:
-                 # Draw five spaces since there is no duckling here.
-                 print(' ' * DUCKLING_WIDTH, end='')
+                print(' ' * DUCKLING_WIDTH, end='')
+
 
         print() # Print a newline.
         sys.stdout.flush() # Make sure text appears on the screen
@@ -101,7 +94,7 @@ class Duckling:
             headStr += ') ' # Get the back of the head.
 
         if self.direction == RIGHT:
-            headStr += ' (' # Get the back of the head
+            headStr += '(' # Get the back of the head
 
             # Get the eyes:
             if self.eyes == BEADY and self.body == CHUBBY:
