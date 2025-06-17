@@ -120,7 +120,7 @@ class Duckling:
             # width as very chubby ducklings.
             headStr += ' '
 
-        return headStr
+        return headStr.ljust(DUCKLING_WIDTH)
         
     def getBodyStr(self):
             """Returns the string of the duckling's body."""
@@ -162,14 +162,18 @@ class Duckling:
                 # width as very chubby ducklings.
                 bodyStr += ' '
 
-            return bodyStr
+            return bodyStr.ljust(DUCKLING_WIDTH)
     
     def getFeetStr(self):
         """Returns the string of the duckling's feet."""
         if self.body == CHUBBY:
-            return ' ^^  '
+            feetStr = ' ^^  '
         elif self.body == VERY_CHUBBY:
-            return ' ^ ^ '
+            feetStr= ' ^ ^ '
+        else:
+            feetStr = ' ^^  '
+        
+        return feetStr.ljust(DUCKLING_WIDTH)
         
     def getNextBodyPart(self):
             """Calls the appropriate display method for the next body
