@@ -109,7 +109,7 @@ class Duckling:
             elif self.eyes == BEADY and self.body == VERY_CHUBBY:
                 headStr += ' "'
             elif self.eyes == WIDE:
-                headStr += " '' "  
+                headStr += "''"  
             elif self.eyes == HAPPY:
                 headStr += '^^'
             elif self.eyes == ALOOF:
