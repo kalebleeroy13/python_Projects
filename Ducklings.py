@@ -136,11 +136,20 @@ class Duckling:
                 if self.body == CHUBBY:
                     bodyStr += ' '
                 elif self.body == VERY_CHUBBY:
-                    bodyStr += ' '
+                    bodyStr += '  '
 
-                # get wings:
+                # get wing:
                 if self.wing == OUT:
                     bodyStr += '>'
+                elif self.wing == UP:
+                    bodyStr += '^'
+                elif self.wing == DOWN:
+                    bodyStr += 'v'
+
+            if self.direction == RIGHT:
+                # Get the wing:
+                if self.wing == OUT:
+                    bodyStr += '<'
                 elif self.wing == UP:
                     bodyStr += '^'
                 elif self.wing == DOWN:
