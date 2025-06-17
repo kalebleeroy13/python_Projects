@@ -92,7 +92,7 @@ class Duckling:
             elif self.eyes == ALOOF:
                 headStr += '``'
 
-            headStr += ') ' # Get the back of the head.
+            headStr += ')' # Get the back of the head.
 
         if self.direction == RIGHT:
             headStr += '(' # Get the back of the head
