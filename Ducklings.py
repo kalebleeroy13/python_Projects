@@ -1,4 +1,5 @@
 import random, shutil, sys, time
+from enum import Enum
 
 # constants:
 Pause = 0.2 #(!) Try changing this to 1.0 or 0.0
