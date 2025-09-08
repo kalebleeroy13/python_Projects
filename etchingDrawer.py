@@ -159,6 +159,15 @@ while True:  # Main progam loop.
         if (cursorX, cursorY) not in canvas:
             canvas[(cursorX, cursorY)] = set()
 
-        #Add the direction string  
+        # Add the direction string  to this xy point's set:
+        if command == 'W':
+            canvas[(cursorX, cursorY)].add('S')
+        elif command == 'S':
+            canvas[(cursorX, cursorY)].add('W')
+        elif command == 'A':
+            canvas[(cursorX, cursorY)].add('D')
+        elif command == 'D':
+            canvas[(cursorX, cursorY)].add('A')
+
 
 
