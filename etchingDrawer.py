@@ -2,6 +2,8 @@
 WASD keys. Inspired by Etch A Sketch toys.
 
 For example, you can draw Hilbert Curve fractal with:
+SDWDDSASDSAAWASSDSASSDWDSDWWAWDDDSASSDWDSDWWAWDWWASAAWDWAWDDSDW
+
 
 
  larger Hilbert Curve fractal with:
