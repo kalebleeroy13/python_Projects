@@ -14,7 +14,7 @@ DWAAWDDDDSDDWDDDDSAASSDDWDDSDDWWAAWDD"""
 
 import shutil, sys
 
-# Set ip the constants for the line chatacters:
+# Set up the constants for the line characters:
 UP_DOWN_CHAR            = chr(9474) # Character 9474 is '|'
 LEFT_RIGHT_CHAR         = chr(9472) # Character 9472 is '-'
 DOWN_RIGHT_CHAR         = chr(9484) # Character 9484 is '┌'
@@ -26,18 +26,18 @@ UP_DOWN_LEFT_CHAR       = chr(9508) # Character 9508 is '┤'
 DOWN_LEFT_RIGHT_CHAR    = chr(9516) # Character 9516 is '┬'
 UP_LEFT_RIGHT_CHAR      = chr(9524) # Character 9524 is '┴'
 CROSS_CHAR              = chr(9532) # Character 9532 is '┼'
-# A list of chr() codes is at hhtps:inventwithpython.com/chr
+# A list of chr() codes is at htps:inventwithpython.com/chr
 
 # Get the size of the terminal window:
 CANVAS_WIDTH, CANVAS_HEIGHT =shutil.get_terminal_size()
 # We can't print to the last column on Window without it adding a 
-# newline automaitcally, so reduce the width by one:
+# newline automatically, so reduce the width by one:
 CANVAS_WIDTH -= 1
 # leave room at the bottom few rows for the command info lines. 
 CANVAS_HEIGHT -= 5
 
-""" The keys for canvas will be (x, y) interger tuples for the coordinate,
-and the value is a set of letterss W, A, S, D that tell what kind of line
+""" The keys for canvas will be (x, y) integer tuples for the coordinate,
+and the value is a set of letters W, A, S, D that tell what kind of line
  should be drawn."""
 canvas = {}
 cursorX = 0 
@@ -89,7 +89,7 @@ def getCanvasString(canvasData, cx, cy):
 
 moves =[]
 while True:  # Main progam loop. 
-    # Draw the line base on theh data in canvas:
+    # Draw the line base on the data in canvas:
     print(getCanvasString(canvas, cursorX, cursorY))
 
     print('WASD keys to move, H for help, C to clear, '
