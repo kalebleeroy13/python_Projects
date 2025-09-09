@@ -114,7 +114,7 @@ while True:  # Main progam loop.
         # Save the canvas string to a text file:
         try:
             print('Enter filename to save to :')
-            filename = input('>')
+            filename = input('> ')
 
             # Make sure the filename ends with .txt:
             if not filename.endswith('.txt'):
