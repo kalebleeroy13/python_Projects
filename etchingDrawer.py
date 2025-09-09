@@ -28,8 +28,11 @@ UP_LEFT_RIGHT_CHAR      = chr(9524) # Character 9524 is '┴'
 CROSS_CHAR              = chr(9532) # Character 9532 is '┼'
 # A list of chr() codes is at htps:inventwithpython.com/chr
 
+# Helper dictionary for reverse directions
+REVERSE_DIRECTION = {'W': 'S', 'S': 'W', 'A': 'D', 'D': 'A'}
+
 # Get the size of the terminal window:
-CANVAS_WIDTH, CANVAS_HEIGHT =shutil.get_terminal_size()
+CANVAS_WIDTH, CANVAS_HEIGHT = shutil.get_terminal_size()
 # We can't print to the last column on Window without it adding a 
 # newline automatically, so reduce the width by one:
 CANVAS_WIDTH -= 1
