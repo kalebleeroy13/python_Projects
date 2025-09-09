@@ -83,7 +83,7 @@ def getCanvasString(canvasData, cx, cy):
                 canvasStr += CROSS_CHAR
             elif cell == None:
                 canvasStr += ' '
-            canvasStr += '\n' # Add a newline at the end of each row. 
+        canvasStr += '\n' # Add a newline at the end of each row. 
         return canvasStr
     
 
