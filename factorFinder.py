@@ -12,3 +12,30 @@ number. Otherwise, we call it a composite number.
       
 Can you discover some prime numbers?
 ''')
+
+while True: # Main program loop
+    print('Enter a positive whole number to factor(or QUIT):')
+    response = input('> ')
+    if response.upper() == 'QUIT':
+        sys.exit()
+
+    if not (response.isdecimal() and int(response) > 0):
+        continue
+    number = int(response)
+
+    factors = []
+
+    # Find the factors of number:
+    for i in range(1,  int(math.sqrt(number)) +1):
+        if number % i == 0: # if there's no remainder it is a factor
+            factors.append(i)
+            factors.append(number// i )
+
+    # convert to a set to get rid of duplicate factors:
+    factors = list(set(factors))
+    factors.sort()
+
+    # Display the results:
+    for i , factor in enumerate(factors):
+        factors[i] = str(factor)
+    print(','.join(factors))
