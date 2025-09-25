@@ -1,41 +1,43 @@
-import math, sys
+import math
+import sys
+from typing import List
 
-print('''Factor Finder, by Al Sweigart al@inventwithpython.com
-      
-A number's factor are two numbers that, when multiplied with each
-other, produce the number. For example, 2 x 13 = 26, so 2 and 13 are
-factors of 26. 1 x 26 = 26, so 1 and 26 are also factors of 26. We
-say that 26 has four factors: 1, 2, 13, and 26.
+def find_factors(n: int) -> List[int]:
+    """Return the sorted list of factors of n."""
+    factors = set()
+    root = int(math.isqrt(n))
+    for i in range(1, root + 1):
+        if n % i == 0:
+            factors.add(i)
+            factors.add(n // i)
+    return sorted(factors)
 
-if a number only has two factors (1 and itself), we call that a prime
-number. Otherwise, we call it a composite number.
-      
-Can you discover some prime numbers?
-''')
+def is_prime(n: int) -> bool:
+    """Return True if n is prime, else False."""
+    return len(find_factors(n)) == 2
 
-while True: # Main program loop
-    print('Enter a positive whole number to factor(or QUIT):')
-    response = input('> ')
-    if response.upper() == 'QUIT':
-        sys.exit()
+def main() -> None:
+    """Main loop for user interaction."""
+    banner = (
+        "Factor Finder, by Al Sweigart al@inventwithpython.com\n\n"
+        "A number's factors are two numbers that multiply to the number.\n"
+        "Prime numbers have exactly two factors: 1 and themselves.\n"
+    )
+    print(banner)
 
-    if not (response.isdecimal() and int(response) > 0):
-        continue
-    number = int(response)
+    while True:
+        response = input("Enter a positive whole number to factor (or QUIT): ").strip()
+        if response.upper() == "QUIT":
+            sys.exit()
 
-    factors = []
+        if not (response.isdecimal() and int(response) > 0):
+            print("Please enter a valid positive integer.")
+            continue
 
-    # Find the factors of number:
-    for i in range(1,  int(math.sqrt(number)) +1):
-        if number % i == 0: # if there's no remainder it is a factor
-            factors.append(i)
-            factors.append(number// i )
+        number = int(response)
+        factors = find_factors(number)
+        print(f"\nFactors of {number}: {', '.join(map(str, factors))}")
+        print("This number is", "prime." if is_prime(number) else "composite.", "\n")
 
-    # convert to a set to get rid of duplicate factors:
-    factors = list(set(factors))
-    factors.sort()
-
-    # Display the results:
-    for i , factor in enumerate(factors):
-        factors[i] = str(factor)
-    print(','.join(factors))
+if __name__ == "__main__":
+    main()
