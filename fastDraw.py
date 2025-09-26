@@ -7,7 +7,7 @@ print('draw in the west!')
 print('When you see "DRAW", you have 0.3 seconds to press Enter.')
 print('But you lose if you press Enter before "Draw" appears.')
 print()
-input('Press Enter to begin....')
+# input('Press Enter to begin....')
 
 while True:
     print()
@@ -24,7 +24,7 @@ while True:
         print('You drew before "DRAW" appeared! You lose.')
     elif timeElapsed > 0.3:
         timeElapsed = round(timeElapsed, 4)
-        print('You took, timeElapsed, seconds to draw. Too slow!')
+        print('You took', timeElapsed, 'seconds to draw. Too slow!')
     else:
         timeElapsed = round(timeElapsed, 4)
         print('You took', timeElapsed, 'seconds to draw.')
