@@ -50,3 +50,21 @@ while True: # Main program loop.
     while True:
         nextNumber = secondToLastNumber + lastNumber
         fibNumbersCalculated += 1
+
+        # Display the next nnumber in the sequence:
+        print(nextNumber, end='')
+
+        # Check if we've found the Nth number the user wants:
+        if fibNumbersCalculated == nth:
+            print()
+            print()
+            print('The #', fibNumbersCalculated, 'fibonacci',
+                  'number is ', nextNumber, sep='')
+            break
+
+        # Prit a comma in between the sequence numbers:
+        print(', ', end='')
+
+        # Shift the last two numbers:
+        secondToLastNumber = lastNumber
+        lastNumber = nextNumber
