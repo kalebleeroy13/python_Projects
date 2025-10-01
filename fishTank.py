@@ -21,3 +21,21 @@ FRAMES_PER_SECOND = 4 # (!) try changing this number to 1 or 60.
 # (!) try changing the constants to create a fish tank with only kelp.
 # or only bubblers.
 
+# NOTE: Every string in a dfish dictionary should be the same length.
+FISH_TYPES = [
+    {'right': ['><>'],          'left': ['<><']},
+    {'right': ['>||>'],         'left': ['<||<']},
+    {'right': ['))'],           'left': ['<[[<']},
+    {'right': ['>||o', '>||.'], 'left': ['o||<', '.||<']},
+    {'right': ['>))o', '>)).'], 'left': ['o[[<', '.[[<']},
+    {'right': ['>-==>'],        'left': ['<==-<']},
+    {'right': [r'>\\>'],        'left': ['<//<']},
+    {'right': ['><)))*>'],      'left': ['<*(((><']},
+    {'right': ['}-[[[*>'],      'left': ['<*]]]-{']},
+    {'right': [']-<)))b>'],     'left': ['<d(((<-[']},
+    {'right': ['><XXX*>'],      'left': ['<*XXX><']},
+    {'right': ['_.-._.-^=>', '.-._.-.^=>', 
+               '-._.-._^=>', '._.-._.^=>'],
+     'left': ['<=^-._.-._', '<=^.-._.-.', 
+              '<=^_.-._.-', '<=^._.-._.']},
+]
