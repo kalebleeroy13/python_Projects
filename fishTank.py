@@ -38,4 +38,31 @@ FISH_TYPES = [
                '-._.-._^=>', '._.-._.^=>'],
      'left': ['<=^-._.-._', '<=^.-._.-.', 
               '<=^_.-._.-', '<=^._.-._.']},
-]
+    ]   # (1) try adding fish to FISH_TYPES.
+LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
+
+# The x and y postions where a fish runs into the edge of the screen:
+LEFT_EDGE = 0
+RIGHT_EDGE = WIDTH - 1 - LONGEST_FISH_LENGTH
+TOP_EDGE = 0
+BOTTOM_EDGE = HEIGHT -2
+
+
+def main():
+    global FISHES, BUBBLERS, BUBBLES, KELPS, STEP
+    bext.bg('black')
+    bext.clear
+
+    # Generate the global variables:
+    FISHES = []
+    for i in range(NUM_FISH):
+        # Each bubbler starts at a random position.
+        BUBBLERS.append(random.randint(LEFT_EDGE, RIGHT_EDGE))
+    BUBBLES = []
+
+    KELPS = []
+    for i in range(NUM_KELP)
+        kelpx = random.randint(LEFT_EDGE, RIGHT_EDGE)
+        kelp = {'x': kelpx, 'segments' : []}
+        # Generate each segment of the kelp:
+        for i in range(random.randint(6, HEIGHT -1)):
