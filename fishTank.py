@@ -61,8 +61,45 @@ def main():
     BUBBLES = []
 
     KELPS = []
-    for i in range(NUM_KELP)
+    for i in range(NUM_KELP):
         kelpx = random.randint(LEFT_EDGE, RIGHT_EDGE)
         kelp = {'x': kelpx, 'segments' : []}
         # Generate each segment of the kelp:
         for i in range(random.randint(6, HEIGHT -1)):
+            kelp['segements'].append(random.choice(['(',')']))
+        KELPS.append(kelp)
+
+    # Run the simulation:
+    STEP = 1
+    while True:
+        simulateAquarium()
+        drawAquarium()
+        time.sleep(1 / FRAMES_PER_SECOND) 
+        clearAquarium()
+        STEP += 1
+
+
+def getRandomColor():
+    """Return a strung of a random color."""
+    return random.choice(('black', 'red', 'green', 'yellow', 'blue',
+                          'purple', 'cyan', 'white'))
+
+
+
+def generateFish():
+    """Return. dictionary that represents a fish."""
+    fishyType = random.choice(FISH_TYPES)
+
+    # Set up colors for each character in the fish text:
+    colorPattern = random.choice(('random', 'head-tail', 'single'))
+    fishLength = len(fishyType['right'][0])
+    if colorPattern == 'random': # All parts are randomly colored.
+        colors = []
+        for i in range(fishLength):
+            colors.append(getRandomColor())
+    if colorPattern == 'single' or colorPattern == 'head-tail':
+        colors = [getRandomColor()] * fishLength # All the same color.
+    if colorPattern == 'head-tail' # Head/tail different from body.
+        headTailColor = getRandomColor()
+        colors[0] = headTailColor # Set head color.
+        colors[-1] = headTailColor # set tail color.
