@@ -56,6 +56,11 @@ def main():
     # Generate the global variables:
     FISHES = []
     for i in range(NUM_FISH):
+        FISHES.append(generateFish())
+
+    # NOTE: Bubbles are drawn, but not the bubblers themselves.
+    BUBBLERS = []
+    for i in range(NUM_BUBBLERS):
         # Each bubbler starts at a random position.
         BUBBLERS.append(random.randint(LEFT_EDGE, RIGHT_EDGE))
     BUBBLES = []
@@ -103,3 +108,29 @@ def generateFish():
         headTailColor = getRandomColor()
         colors[0] = headTailColor # Set head color.
         colors[-1] = headTailColor # set tail color.
+
+    # Set up the rest of fish data structure:
+    fish = {'right':            fishType['right'],
+            'left':             fishType['left'],
+            'colors':           colors,
+            'hSpeed':           random.randint(1, 6),
+            'vSpeed':           random.randint(5, 15),
+            'timeToHDirChange': random.randint(10, 60),
+            'timeToVDirChange': random.randint(2, 20),
+            'goingRight':       random.randint([True, False]),
+            'goingDown':        random.choice([True, False])}
+    
+    # 'x' is always the leftmost side of the fish body:
+    fish['x'] = random.randint(0, WIDTH - 1 - LONGEST_FISH_LENGTH)
+    fish['y'] = random.randint(0, HEIGHT - 2)
+    return fish
+
+
+def simulateAquarium():
+    """Simulate the movements in the aquatium for one step."""
+    global FISHES, BUBBLERS, BUBBLES, KELP, STEP
+    
+    # Simulate the fish for one step:
+    for fish in FISHES:
+        # Move the fish horizontally:
+        if STEP
