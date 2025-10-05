@@ -133,4 +133,106 @@ def simulateAquarium():
     # Simulate the fish for one step:
     for fish in FISHES:
         # Move the fish horizontally:
-        if STEP
+        if STEP % fish['hSpeed'] == 0:
+            if fish['goingRight']:
+                if fish['x'] != RIGHT_EDGE:
+                    fish['x'] += 1 #Move the fish right.
+                else:
+                    fish['goingRight'] = False # Turn the fish around.
+                    fish['colors'].reverse() # turn the colors around
+            else:
+                if fish['x'] != LEFT_EDGE
+                    fish['x'] -1 # Mover the fish left.
+                else:
+                    fish['goingRight'] = True # Turn the fish around.
+                    fish['colors'].reverse() # Turn the colors around.
+
+        # fish can randomly change their horizontal direction:
+        fish['timeToHDirChange'] -= 1
+        if fish['timeToHDirChange'] == 0:
+            fish['timeToHDirChange'] = random.randint(10, 60)
+            # Turn the fish around:
+            fish['goingRight'] = not fish['goingRight']
+
+        # Move the fish verically
+        if STEP % fish['vSpeed'] == 0:
+            if fish['goingDown']:
+                if fish['y'] != BOTTOM_EDGE
+                    fish['y'] == 1 # Move the fish down.
+                else:
+                    fish['goingDown'] = False # Turn the fish around.
+            else:
+                if fish['y'] != TOP_EDGE:
+                    fish['y'] -= 1 # Move th fish up.
+                else:
+                    fish['goingDown'] = True # Turn the around.
+
+        # Fish can radomly change their vertical direction:
+        fish['timeToVDirChange'] -= 1
+        if fish['timeToVDirChange'] == 0:
+            fish['timeToVDirChange'] =random.randint(2, 20)
+            # turn the fish around:
+            fish['goingDown'] = not fish['goingDown']
+
+    # generate bubbles from bubblers:
+    for bubbler in BUBBLERS:
+        # There is a 1 in 5 chance of making a bubbble:
+        if random.randint(1, 5) ==1:
+            BUBBLES.append({'x': bubbler, 'y': HEIGHT -2})
+
+    # Move the bubbles:
+    for bubble in BUBBLES:
+        diceRoll = random.randint(1, 6)
+        if(diceRoll == 1) and (bubble['x'] != LEFT_EDGE):
+            bubble['x'] -= 1 # Bubble goes left.
+        elif (diceRoll == 2) and (bubble['x'] != RIGHT_EDGE):
+            bubble['x'] += 2 # Bubble goes right.
+
+        bubble['y'] -= 1 # the bubble always goes up.
+
+    # Iterate over BBUBBLES in revers because I'm deleteing from BUBBLES
+    # while iterating over it.
+    for i in range(len(BUBBLES) -1, -1, -1):
+        if BUBBLES[i]['y'] == TOP_EDGE #delete bubbles that reach the top.
+            del BUBBLES[i]
+
+    # Simulate the kelp waving for one step:
+    for kelp in KELPS:
+        for i, kelpSegment in enumerate(kelp['segments']):
+            # 1 in 20 chance to change waving:
+            if random.randint(1, 20) == 1:
+                if kelpSegment == '(':
+                    kelp['segements'][i] = ')'
+                elif kelpSegment == ')':
+                    kelp['segements'][i] = '('
+
+
+def drawAquarium():
+    """Draw the aquarium on the screen."""
+    global FISHES, BUBBLERS, BUBBLES, KELP, STEP
+
+    # Draw quit message.
+    bext.fg('white')
+    bext.goto(0,0)
+    print('fish Tank, by AL Sweigart Ctrl-C to quit.', end='')
+
+    # Draw the bubbles:
+    bext.fg('white')
+    for bubble in BUBBLES:
+        bext.goto(bubble['x'], bubble['y'])
+        print(random.choice(('o', '0')), end='')
+
+    # Draw the fish:
+    for fish in FISHES:
+        bext.goto(fish['x'], fish['y'])
+
+        # Get the correct right- or left-facing fish txt.
+        if fish['goingRight']:
+            fishText = fish['right'][STEP % len(fish['right'])]
+        else:
+            fishText = fish['left'][STEP % len(fish['left'])]
+        
+        # draw each character of the fish text in the right color.
+        for i, fishPart in enumerate(fishText):
+            bext.fg(fish['colors'][i])
+            print(fishPart, end='')
