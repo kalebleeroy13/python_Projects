@@ -236,3 +236,22 @@ def drawAquarium():
         for i, fishPart in enumerate(fishText):
             bext.fg(fish['colors'][i])
             print(fishPart, end='')
+
+    # Draw the kelp
+    bext.fg('green')
+    for kelp in KELPS:
+        for i, kelpSegment in enumerate(kelp['segments']):
+            if kelpSegment == '(':
+                bext.goto(kelp['x'], BOTTOM_EDGE - i)
+            elif kelpSegment == ')':
+                bext.goto(kelp['x'] + 1, BOTTOM_EDGE - i)
+            print(kelpSegment, end='')
+
+    # Draw the sand on the bottom:
+    bext.fg('yellow')
+    bext.goto(0, HEIGHT - 1)
+    print(chr(9617) * (WIDTH -1), end='') # Draws sand.
+
+    sys.stdout.flush() # (Required for bext-using programs.)
+
+def clearAquarium():
