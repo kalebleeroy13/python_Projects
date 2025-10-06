@@ -93,18 +93,18 @@ def getRandomColor():
 
 def generateFish():
     """Return. dictionary that represents a fish."""
-    fishyType = random.choice(FISH_TYPES)
+    fishType = random.choice(FISH_TYPES)
 
     # Set up colors for each character in the fish text:
     colorPattern = random.choice(('random', 'head-tail', 'single'))
-    fishLength = len(fishyType['right'][0])
+    fishLength = len(fishType['right'][0])
     if colorPattern == 'random': # All parts are randomly colored.
         colors = []
         for i in range(fishLength):
             colors.append(getRandomColor())
     if colorPattern == 'single' or colorPattern == 'head-tail':
         colors = [getRandomColor()] * fishLength # All the same color.
-    if colorPattern == 'head-tail' # Head/tail different from body.
+    if colorPattern == 'head-tail': # Head/tail different from body.
         headTailColor = getRandomColor()
         colors[0] = headTailColor # Set head color.
         colors[-1] = headTailColor # set tail color.
@@ -141,7 +141,7 @@ def simulateAquarium():
                     fish['goingRight'] = False # Turn the fish around.
                     fish['colors'].reverse() # turn the colors around
             else:
-                if fish['x'] != LEFT_EDGE
+                if fish['x'] != LEFT_EDGE:
                     fish['x'] -1 # Mover the fish left.
                 else:
                     fish['goingRight'] = True # Turn the fish around.
@@ -157,7 +157,7 @@ def simulateAquarium():
         # Move the fish verically
         if STEP % fish['vSpeed'] == 0:
             if fish['goingDown']:
-                if fish['y'] != BOTTOM_EDGE
+                if fish['y'] != BOTTOM_EDGE:
                     fish['y'] == 1 # Move the fish down.
                 else:
                     fish['goingDown'] = False # Turn the fish around.
@@ -190,10 +190,10 @@ def simulateAquarium():
 
         bubble['y'] -= 1 # the bubble always goes up.
 
-    # Iterate over BBUBBLES in revers because I'm deleteing from BUBBLES
+    # Iterate over BUBBLES in revers because I'm deleteing from BUBBLES
     # while iterating over it.
     for i in range(len(BUBBLES) -1, -1, -1):
-        if BUBBLES[i]['y'] == TOP_EDGE #delete bubbles that reach the top.
+        if BUBBLES[i]['y'] == TOP_EDGE: # Delete bubbles that reach the top.
             del BUBBLES[i]
 
     # Simulate the kelp waving for one step:
@@ -259,7 +259,7 @@ def clearAquarium():
     global FISHES, BUBBLERS, BUBBLES, KELP
 
     # Draw the bubbles:
-    for bubble in BUBBLES
+    for bubble in BUBBLES:
         bext.goto(bubble['x'], bubble['y'])
         print(' ', end='')
 
