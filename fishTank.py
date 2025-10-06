@@ -142,7 +142,7 @@ def simulateAquarium():
                     fish['colors'].reverse() # turn the colors around
             else:
                 if fish['x'] != LEFT_EDGE:
-                    fish['x'] -1 # Mover the fish left.
+                    fish['x'] -= 1 # Mover the fish left.
                 else:
                     fish['goingRight'] = True # Turn the fish around.
                     fish['colors'].reverse() # Turn the colors around.
@@ -158,12 +158,12 @@ def simulateAquarium():
         if STEP % fish['vSpeed'] == 0:
             if fish['goingDown']:
                 if fish['y'] != BOTTOM_EDGE:
-                    fish['y'] == 1 # Move the fish down.
+                    fish['y'] += 1 # Move the fish down.
                 else:
                     fish['goingDown'] = False # Turn the fish around.
             else:
                 if fish['y'] != TOP_EDGE:
-                    fish['y'] -= 1 # Move th fish up.
+                    fish['y'] -= 1 # Move the fish up.
                 else:
                     fish['goingDown'] = True # Turn the around.
 
@@ -186,7 +186,7 @@ def simulateAquarium():
         if(diceRoll == 1) and (bubble['x'] != LEFT_EDGE):
             bubble['x'] -= 1 # Bubble goes left.
         elif (diceRoll == 2) and (bubble['x'] != RIGHT_EDGE):
-            bubble['x'] += 2 # Bubble goes right.
+            bubble['x'] += 1 # Bubble goes right.
 
         bubble['y'] -= 1 # the bubble always goes up.
 
