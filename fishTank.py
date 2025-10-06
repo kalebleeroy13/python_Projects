@@ -273,7 +273,7 @@ def clearAquarium():
     # Draw the kelp:
     for kelp in KELPS:
         for i, kelpSefment in enumerate(kelp['segments']):
-            bext.goto(kelp['x'])
+            bext.goto(kelp['x'], HEIGHT - 2 - i)
             print(' ', end='')
 
     sys.stdout.flush() # (Required for bext-using programs.)
