@@ -71,7 +71,7 @@ def main():
         kelp = {'x': kelpx, 'segments' : []}
         # Generate each segment of the kelp:
         for i in range(random.randint(6, HEIGHT -1)):
-            kelp['segements'].append(random.choice(['(',')']))
+            kelp['segments'].append(random.choice(['(',')']))
         KELPS.append(kelp)
 
     # Run the simulation:
