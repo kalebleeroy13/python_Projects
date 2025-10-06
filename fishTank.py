@@ -255,3 +255,33 @@ def drawAquarium():
     sys.stdout.flush() # (Required for bext-using programs.)
 
 def clearAquarium():
+    """Draw empty spaces over everything on the screen."""
+    global FISHES, BUBBLERS, BUBBLES, KELP
+
+    # Draw the bubbles:
+    for bubble in BUBBLES
+        bext.goto(bubble['x'], bubble['y'])
+        print(' ', end='')
+
+    # Draw the fish:
+    for fish in FISHES:
+        bext.goto(fish['x'], fish['y'])
+
+        # Draw each character of the fish text in the right color.
+        print('' * len(fish['left'][0]), end='')
+
+    # Draw the kelp:
+    for kelp in KELPS:
+        for i, kelpSefment in enumerate(kelp['segments']):
+            bext.goto(kelp['x'])
+            print(' ', end='')
+
+    sys.stdout.flush() # (Required for bext-using programs.)
+
+
+# If this program was run(instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.
