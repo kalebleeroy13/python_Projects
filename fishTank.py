@@ -117,7 +117,7 @@ def generateFish():
             'vSpeed':           random.randint(5, 15),
             'timeToHDirChange': random.randint(10, 60),
             'timeToVDirChange': random.randint(2, 20),
-            'goingRight':       random.randint([True, False]),
+            'goingRight':       random.choice([True, False]),
             'goingDown':        random.choice([True, False])}
     
     # 'x' is always the leftmost side of the fish body:
