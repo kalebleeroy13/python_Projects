@@ -202,9 +202,9 @@ def simulateAquarium():
             # 1 in 20 chance to change waving:
             if random.randint(1, 20) == 1:
                 if kelpSegment == '(':
-                    kelp['segements'][i] = ')'
+                    kelp['segments'][i] = ')'
                 elif kelpSegment == ')':
-                    kelp['segements'][i] = '('
+                    kelp['segments'][i] = '('
 
 
 def drawAquarium():
