@@ -51,7 +51,7 @@ BOTTOM_EDGE = HEIGHT -2
 def main():
     global FISHES, BUBBLERS, BUBBLES, KELPS, STEP
     bext.bg('black')
-    bext.clear
+    bext.clear()
 
     # Generate the global variables:
     FISHES = []
