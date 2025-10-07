@@ -85,7 +85,7 @@ def main():
 
 
 def getRandomColor():
-    """Return a strung of a random color."""
+    """Return a string of a random color."""
     return random.choice(('black', 'red', 'green', 'yellow', 'blue',
                           'purple', 'cyan', 'white'))
 
@@ -127,7 +127,7 @@ def generateFish():
 
 
 def simulateAquarium():
-    """Simulate the movements in the aquatium for one step."""
+    """Simulate the movements in the aquarium for one step."""
     global FISHES, BUBBLERS, BUBBLES, KELP, STEP
     
     # Simulate the fish for one step:
