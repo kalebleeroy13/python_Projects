@@ -21,7 +21,7 @@ FRAMES_PER_SECOND = 4 # (!) try changing this number to 1 or 60.
 # (!) try changing the constants to create a fish tank with only kelp.
 # or only bubblers.
 
-# NOTE: Every string in a dfish dictionary should be the same length.
+# NOTE: Every string in a fish dictionary should be the same length.
 FISH_TYPES = [
     {'right': ['><>'],          'left': ['<><']},
     {'right': ['>||>'],         'left': ['<||<']},
@@ -40,6 +40,10 @@ FISH_TYPES = [
               '<=^_.-._.-', '<=^._.-._.']},
     ]   # (1) try adding fish to FISH_TYPES.
 LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
+
+# NOTE crab dictionary
+CRAB_TYPES = ['(v)', '<v>', '[v]', '{v}', '<(v)>', '[=v=]']  # You can get creative here!
+
 
 # The x and y postions where a fish runs into the edge of the screen:
 LEFT_EDGE = 0
