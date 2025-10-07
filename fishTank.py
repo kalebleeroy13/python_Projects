@@ -268,7 +268,7 @@ def clearAquarium():
         bext.goto(fish['x'], fish['y'])
 
         # Draw each character of the fish text in the right color.
-        print('' * len(fish['left'][0]), end='')
+        print(' ' * len(fish['left'][0]), end='')
 
     # Draw the kelp:
     for kelp in KELPS:
