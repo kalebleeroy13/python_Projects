@@ -11,7 +11,7 @@ except ImportError:
 # Set up constants:
 WIDTH, HEIGHT = bext.size()
 # Can't print to the last column on Windows without it adding a 
-# newline automatically, so reduxe the width by one:
+# newline automatically, so reduce the width by one:
 WIDTH -= 1
 
 NUM_KELP = 2 # (!) TRY CHANGING THIS TO 10.
@@ -92,7 +92,7 @@ def getRandomColor():
 
 
 def generateFish():
-    """Return. dictionary that represents a fish."""
+    """Return a dictionary that represents a fish."""
     fishType = random.choice(FISH_TYPES)
 
     # Set up colors for each character in the fish text:
@@ -190,7 +190,7 @@ def simulateAquarium():
 
         bubble['y'] -= 1 # the bubble always goes up.
 
-    # Iterate over BUBBLES in revers because I'm deleteing from BUBBLES
+    # Iterate over BUBBLES in revers because I'm deleting from BUBBLES
     # while iterating over it.
     for i in range(len(BUBBLES) -1, -1, -1):
         if BUBBLES[i]['y'] == TOP_EDGE: # Delete bubbles that reach the top.
@@ -272,7 +272,7 @@ def clearAquarium():
 
     # Draw the kelp:
     for kelp in KELPS:
-        for i, kelpSefment in enumerate(kelp['segments']):
+        for i, kelpSegment in enumerate(kelp['segments']):
             bext.goto(kelp['x'], HEIGHT - 2 - i)
             print(' ', end='')
 
