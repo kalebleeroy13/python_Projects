@@ -167,7 +167,10 @@ def generateFish():
 
 def simulateAquarium():
     """Simulate the movements in the aquarium for one step."""
-    global FISHES, BUBBLERS, BUBBLES, KELP, STEP
+    global FISHES, BUBBLERS, BUBBLES, KELP, STEP, CASTLE_TIMER
+
+    if LAST_CASTLE_POS:
+        CASTLE_TIMER -= 1
     
     # Simulate the fish for one step:
     for fish in FISHES:
@@ -332,6 +335,7 @@ def drawAquarium():
             bext.fg('white')
             bext.goto(cx, cy + i)
             print(line, end='')
+
     sys.stdout.flush() # (Required for bext-using programs.)
 
 def clearAquarium():
