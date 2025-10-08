@@ -195,6 +195,26 @@ def simulateAquarium():
             # turn the fish around:
             fish['goingDown'] = not fish['goingDown']
 
+        # 🦀 Simulate crab movement
+    for crab in CRABS:
+        if STEP % crab['speed'] == 0:
+            if crab['direction'] == 'right':
+                if crab['x'] < WIDTH - len(crab['text']):
+                    crab['x'] += 1
+                else:
+                    crab['direction'] = 'left'
+            else:
+                if crab['x'] > LEFT_EDGE:
+                    crab['x'] -= 1
+                else:
+                    crab['direction'] = 'right'
+
+        crab['timeToChange'] -= 1
+        if crab['timeToChange'] == 0:
+            crab['direction'] = random.choice(['left', 'right'])
+            crab['timeToChange'] = random.randint(10, 40)
+
+
     # generate bubbles from bubblers:
     for bubbler in BUBBLERS:
         # There is a 1 in 5 chance of making a bubbble:
