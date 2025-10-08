@@ -340,7 +340,7 @@ def drawAquarium():
 
 def clearAquarium():
     """Draw empty spaces over everything on the screen."""
-    global FISHES, BUBBLERS, BUBBLES, KELP, CRABS
+    global FISHES, BUBBLERS, BUBBLES, KELP, CRABS, LAST_CASTLE_POS, CASTLE_TIMER
 
     # Draw the bubbles:
     for bubble in BUBBLES:
@@ -364,6 +364,13 @@ def clearAquarium():
     for crab in CRABS:
         bext.goto(crab['x'], crab['y'])
         print(' ' * len(crab['text']), end='')
+
+    if LAST_CASTLE_POS and CASTLE_TIMER <= 0:
+        cx, cy = LAST_CASTLE_POS
+        for i, line in enumerate(CASTLE_ART)
+            bext.goto(cx, cy + i)
+            print(' ' * len(line), end='')
+        LAST_CASTLE_POS
 
 
     sys.stdout.flush() # (Required for bext-using programs.)
