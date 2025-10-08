@@ -370,7 +370,7 @@ def clearAquarium():
         for i, line in enumerate(CASTLE_ART)
             bext.goto(cx, cy + i)
             print(' ' * len(line), end='')
-        LAST_CASTLE_POS
+        LAST_CASTLE_POS = None
 
 
     sys.stdout.flush() # (Required for bext-using programs.)
