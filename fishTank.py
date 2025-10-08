@@ -46,6 +46,24 @@ LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
 # NOTE crab dictionary
 CRAB_TYPES = ['(v)', '<v>', '[v]', '{v}', '<(v)>', '[=v=]']  # You can get creative here!
 
+# NOTE Castle dictionary
+CASTLE_ART = [
+    "   |>>>   ",
+    "   |      ",
+    "  /_\\     ",
+    " |___|    ",
+    " |___|    ",
+    " |___|    ",
+    " |___|    ",
+    " |___|    ",
+    " |___|    ",
+]
+
+LAST_CASTLE_POS = None             # None or (x, y) of castle’s top-left
+CASTLE_TIMER     = 0               # Frames left before disappearing
+CASTLE_DURATION  = FRAMES_PER_SECOND * 5  # Visible for 5 seconds
+
+
 
 # The x and y postions where a fish runs into the edge of the screen:
 LEFT_EDGE = 0
@@ -298,6 +316,9 @@ def drawAquarium():
         bext.fg(crab['color'])
         bext.goto(crab['x'], crab['y'])
         print(crab['text'], end='')
+
+
+
 
 
     sys.stdout.flush() # (Required for bext-using programs.)
