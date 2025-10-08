@@ -195,7 +195,7 @@ def simulateAquarium():
             # turn the fish around:
             fish['goingDown'] = not fish['goingDown']
 
-        # 🦀 Simulate crab movement
+    # 🦀 Simulate crab movement
     for crab in CRABS:
         if STEP % crab['speed'] == 0:
             if crab['direction'] == 'right':
@@ -292,6 +292,13 @@ def drawAquarium():
     bext.fg('yellow')
     bext.goto(0, HEIGHT - 1)
     print(chr(9617) * (WIDTH -1), end='') # Draws sand.
+
+    # 🦀 Draw the crabs
+    for crab in CRABS:
+        bext.fg(crab['color'])
+        bext.goto(crab['x'], crab['y'])
+        print(crab['text'], end='')
+
 
     sys.stdout.flush() # (Required for bext-using programs.)
 
