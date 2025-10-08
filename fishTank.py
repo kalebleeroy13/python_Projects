@@ -268,7 +268,7 @@ def simulateAquarium():
 
 def drawAquarium():
     """Draw the aquarium on the screen."""
-    global FISHES, BUBBLERS, BUBBLES, KELP, STEP, CRABS
+    global FISHES, BUBBLERS, BUBBLES, KELP, STEP, CRABS, LAST_CASTLE_POS, CASTLE_TIMER
 
     # Draw quit message.
     bext.fg('white')
@@ -317,10 +317,21 @@ def drawAquarium():
         bext.goto(crab['x'], crab['y'])
         print(crab['text'], end='')
 
+    
+    #if no castle active, randomly trigger one
+    if LAST_CASTLE_POS is None and random.randint(1, 20) == 1:
+        x = random.randint(0, WIDTH - len(CASTLE_ART[0]))
+        y = HEIGHT - 1 - len(CASTLE_ART)
+        LAST_CASTLE_POS = (x, y)
+        CASTLE_TIMER = CASTLE_DURATION
 
-
-
-
+    # Draw castle if active
+    if LAST_CASTLE_POS:
+        cx, cy = LAST_CASTLE_POS
+        for i, line in enumerate(CASTLE_ART):
+            bext.fg('white')
+            bext.goto(cx, cy + i)
+            print(line, end='')
     sys.stdout.flush() # (Required for bext-using programs.)
 
 def clearAquarium():
