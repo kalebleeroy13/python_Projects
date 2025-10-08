@@ -14,6 +14,7 @@ WIDTH, HEIGHT = bext.size()
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
+NUM_CRABS = 3
 NUM_KELP = 2 # (!) TRY CHANGING THIS TO 10.
 NUM_FISH = 10 # (!) TRY changing this to 2 or 100
 NUM_BUBBLERS = 1 # (!) Try changing this to 0 or 10.
