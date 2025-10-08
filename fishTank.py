@@ -275,7 +275,7 @@ def drawAquarium():
         
         # draw each character of the fish text in the right color.
         for i, fishPart in enumerate(fishText):
-            bext.fg(fish['colors'][i])
+            bext.fg('random')
             print(fishPart, end='')
 
     # Draw the kelp
