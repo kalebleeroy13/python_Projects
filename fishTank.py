@@ -250,7 +250,7 @@ def simulateAquarium():
 
 def drawAquarium():
     """Draw the aquarium on the screen."""
-    global FISHES, BUBBLERS, BUBBLES, KELP, STEP
+    global FISHES, BUBBLERS, BUBBLES, KELP, STEP, CRABS
 
     # Draw quit message.
     bext.fg('white')
@@ -304,7 +304,7 @@ def drawAquarium():
 
 def clearAquarium():
     """Draw empty spaces over everything on the screen."""
-    global FISHES, BUBBLERS, BUBBLES, KELP
+    global FISHES, BUBBLERS, BUBBLES, KELP, CRABS
 
     # Draw the bubbles:
     for bubble in BUBBLES:
@@ -323,6 +323,12 @@ def clearAquarium():
         for i, kelpSegment in enumerate(kelp['segments']):
             bext.goto(kelp['x'], HEIGHT - 2 - i)
             print(' ', end='')
+    
+    # 🦀 Clear the crabs
+    for crab in CRABS:
+        bext.goto(crab['x'], crab['y'])
+        print(' ' * len(crab['text']), end='')
+
 
     sys.stdout.flush() # (Required for bext-using programs.)
 
