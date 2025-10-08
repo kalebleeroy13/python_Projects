@@ -14,7 +14,8 @@ WIDTH, HEIGHT = bext.size()
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-NUM_CRABS = 3
+NUM_CRABS = 3  # NUMBER OF CRABS IN TANK
+
 NUM_KELP = 2 # (!) TRY CHANGING THIS TO 10.
 NUM_FISH = 10 # (!) TRY changing this to 2 or 100
 NUM_BUBBLERS = 1 # (!) Try changing this to 0 or 10.
@@ -54,7 +55,7 @@ BOTTOM_EDGE = HEIGHT -2
 
 
 def main():
-    global FISHES, BUBBLERS, BUBBLES, KELPS, STEP
+    global FISHES, BUBBLERS, BUBBLES, KELPS, STEP, CRABS
     bext.bg('black')
     bext.clear()
 
@@ -78,6 +79,21 @@ def main():
         for i in range(random.randint(6, HEIGHT -1)):
             kelp['segments'].append(random.choice(['(',')']))
         KELPS.append(kelp)
+
+    # Initialize crabs
+    CRABS =[]
+    for _ in range(NUM_CRABS):
+        crab = {
+            'x': random.randint(LEFT_EDGE, WIDTH - 3),
+            'y': HEIGHT - 2,
+            'text': random.choice(CRAB_TYPES),
+            'color': getRandomColor(),
+            'direction': random.choice(['left', 'right']),
+            'speed' : random.randint(2, 6),
+            'timeToChange': random.randint(10, 40)
+        }
+        CRABS.append(crab)
+
 
     # Run the simulation:
     STEP = 1
