@@ -367,7 +367,7 @@ def clearAquarium():
 
     if LAST_CASTLE_POS and CASTLE_TIMER <= 0:
         cx, cy = LAST_CASTLE_POS
-        for i, line in enumerate(CASTLE_ART)
+        for i, line in enumerate(CASTLE_ART):
             bext.goto(cx, cy + i)
             print(' ' * len(line), end='')
         LAST_CASTLE_POS = None
