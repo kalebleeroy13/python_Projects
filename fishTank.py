@@ -118,7 +118,7 @@ def generateFish():
 
     # Set up colors for each character in the fish text:
     colorPattern = random.choice(('random', 'head-tail', 'single'))
-    fishLength = len(fishType['right'][0])
+    fishLength = max(len(s) for s in fishType['right'] + fishType['left'])
     if colorPattern == 'random': # All parts are randomly colored.
         colors = []
         for i in range(fishLength):
@@ -275,7 +275,7 @@ def drawAquarium():
         
         # draw each character of the fish text in the right color.
         for i, fishPart in enumerate(fishText):
-            bext.fg('random')
+            bext.fg(fish['colors'][i])
             print(fishPart, end='')
 
     # Draw the kelp
