@@ -196,13 +196,7 @@ def simulateAquarium():
         fish['timeToHDirChange'] -= 1
         if fish['timeToHDirChange'] == 0:
             fish['timeToHDirChange'] = random.randint(10, 60)
-            # Turn the fish around:
             fish['goingRight'] = not fish['goingRight']
-
-        if fish['timeToHDirChange'] == 0:
-            fish['goingRight'] = not fish['goingRight']
-            fish['timeToHDirChange'] = random.randint(10, 60)
-            # ─── New line ───
             fish['hSpeed'] = random.randint(1, 6)
 
 
@@ -219,19 +213,16 @@ def simulateAquarium():
                 else:
                     fish['goingDown'] = True # Turn the around.
 
-        # Fish can radomly change their vertical direction:
-        fish['timeToVDirChange'] -= 1
-        if fish['timeToVDirChange'] == 0:
-            fish['timeToVDirChange'] =random.randint(2, 20)
-            # turn the fish around:
-            fish['goingDown'] = not fish['goingDown']
 
+        # Fish can rndomly change their vertical direction and speed:
+        fish['timeToDirChange'] -= 1
         if fish['timeToVDirChange'] == 0:
-            fish['goingDown'] = not fish['goingDown']
+            # reset timer
             fish['timeToVDirChange'] = random.randint(2, 20)
-            # ─── New line ───
+            # flip vertical direction
+            fish['goingDown'] = not fish['goingDown']
+            # -- New line: pich a fresh vertical speed --
             fish['vSpeed'] = random.randint(5, 15)
-
 
     # 🦀 Simulate crab movement
     for crab in CRABS:
