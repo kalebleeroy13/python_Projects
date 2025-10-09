@@ -159,6 +159,9 @@ def generateFish():
             'goingRight':       random.choice([True, False]),
             'goingDown':        random.choice([True, False])}
     
+    
+
+    
     # 'x' is always the leftmost side of the fish body:
     fish['x'] = random.randint(0, WIDTH - 1 - LONGEST_FISH_LENGTH)
     fish['y'] = random.randint(0, HEIGHT - 2)
@@ -196,6 +199,13 @@ def simulateAquarium():
             # Turn the fish around:
             fish['goingRight'] = not fish['goingRight']
 
+        if fish['timeToHDirChange'] == 0:
+            fish['goingRight'] = not fish['goingRight']
+            fish['timeToHDirChange'] = random.randint(10, 60)
+            # ─── New line ───
+            fish['hSpeed'] = random.randint(1, 6)
+
+
         # Move the fish verically
         if STEP % fish['vSpeed'] == 0:
             if fish['goingDown']:
@@ -215,6 +225,13 @@ def simulateAquarium():
             fish['timeToVDirChange'] =random.randint(2, 20)
             # turn the fish around:
             fish['goingDown'] = not fish['goingDown']
+
+        if fish['timeToVDirChange'] == 0:
+            fish['goingDown'] = not fish['goingDown']
+            fish['timeToVDirChange'] = random.randint(2, 20)
+            # ─── New line ───
+            fish['vSpeed'] = random.randint(5, 15)
+
 
     # 🦀 Simulate crab movement
     for crab in CRABS:
