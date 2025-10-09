@@ -215,7 +215,7 @@ def simulateAquarium():
 
 
         # Fish can rndomly change their vertical direction and speed:
-        fish['timeToDirChange'] -= 1
+        fish['timeToVDirChange'] -= 1
         if fish['timeToVDirChange'] == 0:
             # reset timer
             fish['timeToVDirChange'] = random.randint(2, 20)
