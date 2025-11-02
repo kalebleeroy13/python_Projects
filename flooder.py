@@ -131,3 +131,23 @@ def displayBoard(board, displayMode):
     print(UPRIGHT + (LEFTRIGHT + BOARD_WIDTH) + UPLEFT)
 
 
+def askForPlayerMove(displayMode):
+    """Let the player select a color to paint te uppper left tile."""
+    while True:
+        bext.fg('white')
+        print('Choose one of ', end='')
+
+        if displayMode == COLOR_MODE:
+            bext.fg('red')
+            print('(R)ed ', end='')
+            bext.fg('green')
+            print('(G)reen ', end='')
+            bext.fg('blue')
+            print('(B)lue ', end='')
+            bext.fg('yellow')
+            print('(Y)ellow ', end='')
+            bext.fg('cyan')
+            print('(C)yan ', end='')
+            bext.fg('purple')
+            print('(P)urple ', end='')
+        elif
