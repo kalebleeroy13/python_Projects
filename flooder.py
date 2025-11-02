@@ -103,3 +103,31 @@ def getNewBoard():
     return board
 
 
+def displayBoard(board, displayMode):
+    """ Display the board on the screen."""
+    bext.fg('white')
+    # Display the top edge of the board:
+    print(DOWNRIGHT + (LEFTRIGHT * BOARD_WIDTH) + DOWNLEFT) 
+
+    # Display each row:
+    for y in range(BOARD_HEIGHT):
+        bext.fg('white')
+        if y == 0: # the first row begins with '>'.
+            print('>', end='')
+        else: # ater rows begin with a white vertical line.
+            print(UPDOWN, end='')
+
+        # Display each tile in this row:
+        for x in range(BOARD_WIDTH):
+            bext.fg(COLORS_MAP[board[(x, y)]])
+            if displayMode == COLOR_MODE:
+                print(BLOCK, end='')
+            elif displayMode == SHAPE_MODE:
+                print(SHAPES_MAP[board[x,y]], end='')
+
+        bext.fg('white')
+        print(UPDOWN) # Rows end with a white vertical line.
+    # Display the bottom edge of the board:
+    print(UPRIGHT + (LEFTRIGHT + BOARD_WIDTH) + UPLEFT)
+
+
