@@ -27,7 +27,7 @@ UPDOWN      = chr(9474) # character 9474 is '│'
 DOWNRIGHT   = chr(9484) # character 9484 is '┌'
 DOWNLEFT    = chr(9488) # character 9488 is '┐'
 UPRIGHT     = chr(9492) # character 9492 is '└'
-UPLEFT      = chr (9496) # character 9496 is 
+UPLEFT      = chr (9496) # character 9496 is '┘'
 # A list of chr() coes is at https://inventwithpython.com/chr
 
 # All the color/shape tiles used on the board:
@@ -39,6 +39,7 @@ SHAPES_MAP = {0: HEART, 1: TRIANGLE, 2:DIAMOND,
               3: BALL, 4: CLUB, 5: SPADE}
 SHAPE_MODE = 'shape mode'
 
+
 def main():
     bext.bg('black')
     bext.fg('white')
@@ -49,4 +50,56 @@ Set the upper left color/shape, which fills in all the
 adjacent squares of that color/shape. Try to make the
 entire board the same color/shape.''')
     
+    print('Do you want to play in colorblind mode Y/N')
+    response = input('> ')
+    if response.upper().startswith('Y'):
+        displayMode = SHAPE_MODE
+    else:
+        displayMode = COLOR_MODE
+
+    gameBoard = getNewBoard()
+    movesLeft = MOVES_PER_GAME
+
+
+    while True: # Main game loop.
+        displayBoard(gameBoard, displayMode)
+
+        print('Moves left:', movesLeft)
+        playerMove = askforPlayerMove(displayMode)
+        changeTile(playerMove, gameBoard, 0, 0)
+        movesLeft -= 1
+
+        if hasWon(gameBoard):
+            displayBoard(gameBoard, displayMode)
+            print('You have won!')
+            break
+        elif movesLeft == 0:
+            displayBoard(gameBoard, displayMode)
+            print('You have won!')
+            break
+        elif movesLeft == 0:
+            displayBoard(gameBoard, displayMode)
+            print('You have run out of moves!')
+            break
+
+
+def getNewBoard():
+    """Return a dictionary of a new Flood it board."""
+
+    # Keys are (x, y) tuples, values are the tile at that position.
+    board ={}
+
+    # Create random colors for the board.
+    for x in range(BOARD_WIDTH):
+        for y in range(BOARD_HEIGHT):
+            board[(x,y)] = random.choice(TILE_TYPES)
+
+    # Make several tiles the same as their neighbor. This creates groups
+    # of the same color/shape.
+    for i in range(BOARD_WIDTH * BOARD_HEIGHT):
+        x = random.randint(0, BOARD_HEIGHT - 2)
+        y = random.randint(0, BOARD_HEIGHT - 1)
+        board[(x +1,y )] = board[(x,y)]
+    return board
+
 
