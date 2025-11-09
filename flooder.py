@@ -150,4 +150,30 @@ def askForPlayerMove(displayMode):
             print('(C)yan ', end='')
             bext.fg('purple')
             print('(P)urple ', end='')
-        elif
+        elif displayMode == SHAPE_MODE:
+            bext.fg('red')
+            print('(H)eart ', end='')
+            bext.fg('green')
+            print('(T)riangle ', end='')
+            bext.fg('blue')
+            print('(D)iamond ', end='')
+            bext.fg('yellow')
+            print('(B)all ', end='')
+            bext.fg('cyan')
+            print('(C)lub ', end='')
+            bext.fg('purple')
+            print('(S)pade ', end='')
+        bext.fg('white')
+        print('or QUIT:')
+        response = input('> ').upper()
+        if response == 'QUIT':
+            print('thanks for playing!')
+            sys.exit()
+            if displyMode == COLOR_MODE and response in tuple('RGBYCP'):
+                # Return a tile type number based on the respone:
+                return {'R': 0, 'G': 1, 'B': 2,
+                        'Y': 3, 'C': 4, 'P': 5}[response]
+            if displayMode == SHAPE_MODE and response in tuple('HTDBCS'):
+                # Return a tile type number based on the response:
+                return {'H': 0, 'T': 1, 'D':2,
+                        'B': 3, 'C': 4, 'S': 5}[response]
