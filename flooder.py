@@ -177,3 +177,15 @@ def askForPlayerMove(displayMode):
                 # Return a tile type number based on the response:
                 return {'H': 0, 'T': 1, 'D':2,
                         'B': 3, 'C': 4, 'S': 5}[response]
+
+
+def changTile(tileType, board, x, y, charToChange=None):
+    """Change the color/shape of a tile using the recursive flood fill
+    algorithm."""
+    if x == 0 and y == 0:
+        charToChange = board[(x, y)]
+        if tileType == charToChange:
+            return # Base Case: Already is the same tile.
+        
+    board[(x, y)] = tileType
+    
